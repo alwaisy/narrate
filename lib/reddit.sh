@@ -2,6 +2,9 @@
 
 source "$(dirname "$0")/../config.sh"
 
+# Ensure template index is fresh
+bash "$(dirname "$0")/build_index.sh"
+
 # Dynamically count the number of subreddits in the array
 SUB_COUNT=${#SUBREDDITS[@]}
 

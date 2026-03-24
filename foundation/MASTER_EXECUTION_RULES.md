@@ -33,12 +33,13 @@ Every post must follow this order. Lead with the pain.
 
 ---
 
-## THE 3 PILLAR JOBS
-Each session produces exactly 3 posts. One per pillar.
+## DATA EXTRACTION (Dual-Mode)
 
-1. **Pillar 1 — Problem-First Product Story:** Acquire new readers.
-2. **Pillar 2 — The Decision That Actually Mattered:** Convert readers into believers (Logic/Tactics).
-3. **Pillar 3 — Building Without a Safety Net:** Trust through honesty (Vulnerability).
+**If Source = REDDIT:**
+- Extract: The core rant/problem, users' specific pain in comments, MRR/User metrics, and key "Fork in the Road" decisions.
+
+**If Source = ARTICLE:**
+- Extract: The author's thesis statement, case study evidence, specific numbers, and the "Founder story" buried in the text.
 
 ---
 
@@ -48,21 +49,35 @@ Step 1: FOUNDATION PRIME
 - Read: awais-content-strategy.docx.md, awais-icp (1).md, content-pillars.md, identity_rules.md.
 
 Step 2: NUGGET EXTRACTION
-- Extract: One-sentence problem, metrics (MRR/users), direct quotes, key decisions.
+- Extract specific metrics and quotes based on the Dual-Mode rules above.
+- If data is sparse: flag as [THIN SOURCE].
 
 Step 3: RAW DRAFTS (Plain Text)
-- Write 3 drafts in plain paragraphs. NO formatting. NO templates.
-- [MANDATORY]: Save to '/content/drafts/[PKT_TIME]_[Slug]/'.
+- [MANDATORY]: Write 3 drafts in plain paragraphs. NO formatting. NO templates.
+- **[HARD STOP]**: You MUST save these to '/content/drafts/[PKT_TIME]_[Slug]/' before Step 4.
 
-Step 4: TEMPLATE SELECTION
-- Open 'working/template_index.json'.
-- COOL-DOWN: Exclude IDs from last 10 session reports.
-- Pick 3 unique IDs. One per angle.
+Step 4: TEMPLATE SELECTION (Two-Phase, runs AFTER drafts are saved)
+
+Phase A — Index Scan
+- Read 'working/template_index.json'.
+- COOL-DOWN: Read last 10 session reports in 'reports/'. List every Template ID mentioned. Exclude them.
+- Match remaining templates to each draft based on content:
+  * Pillar 1 (Problem story) → funnel_stage: TOFU, tone: Contrarian or Storytelling
+  * Pillar 2 (Decision) → funnel_stage: MOFU, content_category: Case Study or Decision
+  * Pillar 3 (Honest) → funnel_stage: MOFU or BOFU, tone: Vulnerable or Raw
+- Log the match: Angle 01 → ID X, Angle 02 → ID Y, Angle 03 → ID Z.
+
+Phase B — Fetch Full Template
+- For each ID, run: bash lib/get_template.sh [ID]
+- Read the full structure output.
+- Do NOT proceed without running this command.
+- Do NOT freestyle or use a template you did not fetch.
+- If command returns error, pick next closest ID and retry.
 
 Step 5: FORMAT AND LOCK
 - Copy EXACT structure from 'working/linkedin-templates.json'. 
 - [SHRINK TO FIT]: Delete template sections if story is short. NEVER pad with hallucinated facts.
-- Apply Identity Lock and Anti-AI Lock.
+- [PIVOT]: Change author's "I" to "The founder".
 
 Step 6: SELF-CORRECTION AUDIT
 - [ ] Matches template structure exactly?
@@ -72,4 +87,5 @@ Step 6: SELF-CORRECTION AUDIT
 
 Step 7: SAVE AND LOG
 - Save finalized posts to '/content/posts/[PKT_TIME]_[Slug]/'.
-- Update 'content/processed_threads.json' and reports/.
+- Update 'content/processed_sources.json' and reports/.
+- Session report must state the Source Type (Reddit/Article).

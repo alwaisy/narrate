@@ -2,1884 +2,1374 @@
   {
     "id": "1",
     "name": "Relatable Struggle Post",
-    "description": "Contrarian posts cut through the noise because they challenge what everyone accepts as truth. When you call out conventional wisdom with bold opinions backed by real results, you create debate, memorability, and position yourself as an independent thinker.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Myth-busting",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Conversion",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Myth-busting",
+    "hook_type": "Belief Flip",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "2",
     "name": "Delete &amp; Rebuild Formula",
-    "description": "This format works by positioning your expertise through a premium price point, then delivering the exact framework you charge for. By telling people to delete everything and rebuild with your specific system, you create urgency while proving your value through actionable steps.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "3",
     "name": "Value Multiplier Post",
-    "description": "This format works by leading with a counterintuitive lesson, backing it with authority, then revealing the hidden consequence most people miss. The multiplier framework (10x, 100x) makes the value gap concrete and creates urgency around taking action.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "How To",
-      "primary_goal": "Authority",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "4",
     "name": "Unexpected Client/Friend Success Story",
-    "description": "This format works by showcasing someone who achieved impressive results through an unconventional path that contradicts popular advice. By detailing the step-by-step journey with specific numbers and surprising twists, you challenge conventional wisdom while providing a complete business case study.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "5",
     "name": "The Underrated List",
-    "description": "This format works by providing a high-value list of counterintuitive or underrated tips on a specific topic. Each point uses a sub-bullet to provide immediate context or a 'how-to,' making the post highly shareable and easy to consume.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "The Call Out",
-      "primary_goal": "Authority",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "The Call Out",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career"
+    ]
   },
   {
     "id": "6",
     "name": "The Price of Honesty",
-    "description": "This format works by sharing a specific moment where choosing integrity over a \"quick win\" cost you a deal in the short term, but built your reputation in the long term. It positions you as an expert who values results over empty promises.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Case Study",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Sales",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Social Proof"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Case Study",
+    "hook_type": "Belief Flip",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Sales",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "7",
     "name": "Indispensable Skill List",
-    "description": "This format works by providing a high-value list of counterintuitive or underrated tips on a specific topic. Each point uses a sub-bullet to provide immediate context or a 'how-to,' making the post highly shareable and easy to consume.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Viral Awareness",
-      "hook_type": "The Call Out",
-      "primary_goal": "Reach",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career"
-      ],
-      "key_psychological_trigger": "Curiosity Gap"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Viral Awareness",
+    "hook_type": "The Call Out",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career"
+    ]
   },
   {
     "id": "8",
     "name": "The Boundary Playbook",
-    "description": "This format works by leading with a strong, contrarian command (e.g., 'Stop justifying...'), then providing an exhaustive list of practical alternatives (phrases/steps) that solve a common emotional or professional pain point. It's highly bookmarkable and provides instant value.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "The Call Out",
-      "primary_goal": "Conversion",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "The Call Out",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "9",
     "name": "The Attachment Trap",
-    "description": "This format works by calling out a 'most expensive mistake' in a specific field, delivering a harsh reality check, and then providing a clear 3-step framework to pivot toward a better alternative. It positions the writer as a wise mentor who has learned the hard way.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "How To",
-      "primary_goal": "Authority",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "How To",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "10",
     "name": "The Cost of Inefficiency",
-    "description": "This format works by leading with a polarizing story (e.g., getting fired for a controversial opinion), calculating the specific financial cost of a common industry habit, and then offering a proven alternative. It establishes high authority and business acumen.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "The Call Out",
-      "primary_goal": "Conversion",
-      "tone": "Empathetic",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "The Call Out",
+    "tone": "Empathetic",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "11",
     "name": "The Cost of Pain",
-    "description": "This format works by comparing two polar opposite client experiences for the exact same deliverable. It highlights the hidden costs of \"babysitting\" and \"indecision,\" positioning the service provider as an expert who values their time and efficiency. It uses a \"Price vs. Value vs. Pain\" breakdown to justify premium pricing.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Case Study",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Social Proof"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Case Study",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "12",
     "name": "The Velocity Protocol",
-    "description": "This format works by taking a controversial stance against a standard industry \"best practice\" (like code reviews) for a specific phase (MVPs). It uses data comparison, a dialogue-style debate to handle objections, and a clear \"New Protocol\" list to provide a better alternative for speed and validation.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Authority",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "Belief Flip",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "13",
     "name": "The Hidden Cost",
-    "description": "This format works by identifying a \"hidden cost\" or invisible problem in a specific area (like leadership or operations). It uses a numbered list to break down the psychological or structural reasons behind the problem, ending with a powerful \"truth\" statement and a question to engage the audience.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "14",
     "name": "The Stage-Fit Formula",
-    "description": "This format works by contrasting two different types of expertise (e.g., FAANG vs. Startup) and showing why one is a \"death sentence\" for a specific stage of business. It uses a real-world comparison, a \"Rule\" for hiring/strategy, and a punchy closing argument about survival vs. optimization.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Personal Story",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Conversion",
-      "tone": "Empathetic",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Relatability"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Personal Story",
+    "hook_type": "Belief Flip",
+    "tone": "Empathetic",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "15",
     "name": "The Macro-Management Flip",
-    "description": "This format works by sharing a specific, counter-intuitive action (e.g., cancelling a standard meeting) to introduce a higher-level philosophy (e.g., macro-managing). It challenges the need for constant oversight and provides a list of \"how it works\" principles based on trust and empowerment.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "The Call Out",
-      "primary_goal": "Conversion",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "The Call Out",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career"
+    ]
   },
   {
     "id": "16",
     "name": "The Advocacy Brand",
-    "description": "This format works by exposing a harsh reality about how decisions are made in private rooms, followed by a personal story of betrayal or challenge. It then provides a framework for building a personal \"brand\" that protects the reader when they aren't present to defend themselves.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "The Call Out",
-      "primary_goal": "Authority",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "The Call Out",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "17",
     "name": "The Overhyped Fix",
-    "description": "This format works by calling out a lazy industry trend (like slapping AI on everything) and using a powerful, relatable analogy (like a soap dispenser on a bar of soap) to expose why it is pointless. It uses bulleted lists to explain the psychology behind the trend and delivers a \"hard truth\" reality check.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Authority",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Social Proof"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "18",
     "name": "The Trust-First Pivot",
-    "description": "This format works by starting with a dramatic list of \"quits\" or changes to grab attention, then using a major company (like Spotify) as a case study for a positive shift. It uses a bulleted list of benefits to contrast a trust-based culture against traditional \"control\" cultures, ending with a call for more consciousness in leadership.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "19",
     "name": "The Prerequisite Checklist",
-    "description": "This format works by leading with a harsh truth about a dependency (e.g., your model is useless without clean data). It provides a quick, high-value numbered checklist to solve that specific problem, followed by a personal recommendation/story that builds credibility and offers further value.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "20",
     "name": "The Trust-Based Result",
-    "description": "This format works by leading with a powerful company quote and a personal milestone (e.g., years since being in an office). It contrasts the \"Old Way\" (micro-management) with the \"Trust Way\" (results-driven), providing a numbered breakdown of what remote work or trust-based systems actually expose in an organization.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "21",
     "name": "The Milestone Transformation",
-    "description": "This format works by contrasting a specific past failure or \"low point\" with a current success milestone. It uses a \"Before vs. After\" bulleted structure to highlight emotional and professional growth, ending with a message of encouragement and gratitude to the community.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Case Study",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Social Proof"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Case Study",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "22",
     "name": "The Curated Resource List",
-    "description": "This format works by providing a high-value list of specific courses, tools, or resources related to a trending skill (e.g., SEO). It uses a numbered list with nested bullets to break down exactly what is covered in each resource and includes direct links, making it an immediate \"save-worthy\" post.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "23",
     "name": "The Lagging Indicator Dialogue",
-    "description": "This format works by starting with a realistic dialogue between a client/founder and an expert. It introduces a core principle (e.g., lagging indicators) to manage expectations and uses bulleted lists to contrast surface-level results with deep strategic work. It ends by handling common objections about competitors.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Case Study",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Social Proof"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Case Study",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "24",
     "name": "Roundup Post",
-    "description": "Roundup posts perform well because participants often share them. Include graphics for clarity and categorize contributors.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "25",
     "name": "Step-by-Step Blueprint",
-    "description": "Show how you went from zero to a goal. Share a clear, actionable blueprint.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "How To",
-      "primary_goal": "Authority",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "26",
     "name": "Responsibilities Made Simple",
-    "description": "Explain why a responsibility is tough and provide practical ways to make it easier. Humorous visuals often amplify engagement.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "27",
     "name": "Newsjacking",
-    "description": "Leverage breaking news or demos to spark discussion. Focus on relevance, implications, and potential disruption.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Sales",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Sales",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "28",
     "name": "“No Before Yes”",
-    "description": "Show persistence by emphasizing that multiple “no’s” lead to eventual success.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Personal Story",
-      "hook_type": "How To",
-      "primary_goal": "Reach",
-      "tone": "Empathetic",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Relatability"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Personal Story",
+    "hook_type": "How To",
+    "tone": "Empathetic",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "29",
     "name": "Gated AI Prompts",
-    "description": "Offer your AI prompt library as a free resource to drive engagement. Highlight outcomes and structure access to generate leads.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Tech"
+    ]
   },
   {
     "id": "30",
     "name": "Gamified Learning",
-    "description": "Turn skill-building into a step-by-step game. Include visuals to make the process more engaging.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "How To",
-      "primary_goal": "Authority",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Sales",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "How To",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Sales",
+      "Tech"
+    ]
   },
   {
     "id": "31",
     "name": "Underdog Story + Playbook",
-    "description": "Tell a story about someone unexpectedly succeeding. Share the playbook as a lead magnet.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Case Study",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Social Proof"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Case Study",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "32",
     "name": "Underdog Win Story",
-    "description": "This format works by highlighting an unconventional company/person that achieved massive success by breaking industry rules, then revealing the counterintuitive practice that drove their results.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "The Call Out",
-      "primary_goal": "Conversion",
-      "tone": "Empathetic",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "The Call Out",
+    "tone": "Empathetic",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "33",
     "name": "Corporate Growth Analysis",
-    "description": "Analyze a company’s unconventional growth strategy, breaking down actions, results, and takeaways.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "The Call Out",
-      "primary_goal": "Authority",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "The Call Out",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "34",
     "name": "Buzzword Take Down",
-    "description": "Pick a popular term and explain why it’s misleading or overrated. This generates engagement and invites debate.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Authority",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Social Proof"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "Belief Flip",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Tech"
+    ]
   },
   {
     "id": "35",
     "name": "Give Away Your 80/20 Strategy",
-    "description": "Share the single task or framework that drives the most results in your business. Make it practical, actionable, and easy for readers to replicate.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "36",
     "name": "Done-for-You Frameworks",
-    "description": "Offer a resource that saves your audience hours of work. Could be templates, lists, or frameworks specific to your niche.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "37",
     "name": "Don’t Give Up",
-    "description": "Highlight persistence through trial and error. Focus on influential examples and the importance of consistency.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Viral Awareness",
-      "hook_type": "The Call Out",
-      "primary_goal": "Reach",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Curiosity Gap"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Viral Awareness",
+    "hook_type": "The Call Out",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "38",
     "name": "Internal Processes",
-    "description": "Share your internal workflows to prove expertise and add practical value. Videos amplify engagement.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "How To",
-      "primary_goal": "Authority",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "39",
     "name": "Non-Negotiables",
-    "description": "Share routines or habits that lead to peak productivity, leadership, or communication. Focus on benefits, not grueling best practices.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "40",
     "name": "Expensive Obsession Takedown",
-    "description": "This format works for founders and leaders by calling out a widespread professional obsession that wastes resources, then contrasting it with how successful companies actually operated and what customers truly care about.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Empathetic",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Empathetic",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "41",
     "name": "AI-Powered Process",
-    "description": "Leverage AI tools for a process your audience wants to understand. Use a compelling, attention-grabbing hook.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "42",
     "name": "Vanity Metrics vs Real Impact",
-    "description": "Challenge ineffective metrics and show what really indicates success. Use anecdotes to illustrate hidden progress.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Lead Magnet",
-      "hook_type": "How To",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Lead Magnet",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "43",
     "name": "7 Key Actions",
-    "description": "Share the 7 actions or principles behind a desirable outcome your audience wants. Focus on simplicity and actionable tips.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Authority",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Sales",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Sales",
+      "Tech"
+    ]
   },
   {
     "id": "44",
     "name": "Industry Myth Destroyer",
-    "description": "This format works by taking on a powerful industry force, exposing their hidden incentives, and contrasting the mainstream playbook with real success stories that ignored conventional wisdom.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Personal Story",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Conversion",
-      "tone": "Empathetic",
-      "ideal_for_niche": [
-        "B2B",
-        "Founders",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Relatability"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Personal Story",
+    "hook_type": "Belief Flip",
+    "tone": "Empathetic",
+    "ideal_for_niche": [
+      "B2B",
+      "Founders",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "45",
     "name": "Debunk Misconceptions",
-    "description": "Expose common industry misconceptions and explain why they’re incorrect. Use anecdotes and clear lessons.\n\nTemplate:",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "The Call Out",
-      "primary_goal": "Authority",
-      "tone": "Contrarian",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "The Call Out",
+    "tone": "Contrarian",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Tech"
+    ]
   },
   {
     "id": "46",
     "name": "[Skipped]",
-    "description": "",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Educational Trust-builder",
-      "hook_type": "How To",
-      "primary_goal": "Authority",
-      "tone": "Authoritative",
-      "ideal_for_niche": [
-        "B2B",
-        "Marketing",
-        "Career",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Educational Trust-builder",
+    "hook_type": "How To",
+    "tone": "Authoritative",
+    "ideal_for_niche": [
+      "B2B",
+      "Marketing",
+      "Career",
+      "Tech"
+    ]
   },
   {
     "id": "47",
     "name": "The Vulnerable Launch Story",
-    "description": "This format works by admitting a deep, relatable fear (failure/rejection) right before announcing a success or product launch. It shifts the narrative from selling to serving, making the ultimate CTA feel earned rather than pushed.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Personal Story",
-      "hook_type": "The Struggle",
-      "primary_goal": "Conversion",
-      "tone": "Vulnerable",
-      "ideal_for_niche": [
-        "Coaching",
-        "Consulting",
-        "Service Providers"
-      ],
-      "key_psychological_trigger": "Relatability & Scarcity"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Personal Story",
+    "hook_type": "The Struggle",
+    "tone": "Vulnerable",
+    "ideal_for_niche": [
+      "Coaching",
+      "Consulting",
+      "Service Providers"
+    ]
   },
   {
     "id": "48",
     "name": "The Boundary Call-Out",
-    "description": "This format works by addressing a negative experience (like being copied or slighted) without anger. It turns a potential rant into an educational 'teachable moment,' establishing the author as an unbothered industry leader.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Lessons & Mistakes",
-      "hook_type": "Storytelling",
-      "primary_goal": "Authority",
-      "tone": "Conversational & Firm",
-      "ideal_for_niche": [
-        "Founders",
-        "Creators",
-        "Freelancers"
-      ],
-      "key_psychological_trigger": "High-Status Behavior"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Lessons & Mistakes",
+    "hook_type": "Storytelling",
+    "tone": "Conversational & Firm",
+    "ideal_for_niche": [
+      "Founders",
+      "Creators",
+      "Freelancers"
+    ]
   },
   {
     "id": "49",
     "name": "The Contrarian Tool Stack",
-    "description": "A high-utility listicle that hooks the reader by excluding the most obvious answer (e.g., ChatGPT). It breaks down alternative tools clearly, focusing on use-cases and price points.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Tutorial / Resource",
-      "hook_type": "The Oddly Ignored / Contrarian",
-      "primary_goal": "Saves & Shares",
-      "tone": "Tactical & Direct",
-      "ideal_for_niche": [
-        "Tech",
-        "Marketing",
-        "Productivity"
-      ],
-      "key_psychological_trigger": "Utility & Novelty"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Tutorial / Resource",
+    "hook_type": "The Oddly Ignored / Contrarian",
+    "tone": "Tactical & Direct",
+    "ideal_for_niche": [
+      "Tech",
+      "Marketing",
+      "Productivity"
+    ]
   },
   {
     "id": "50",
     "name": "The High-Converting Funnel",
-    "description": "This format works by starting with transparent, realistic numbers (not hyperbole) to build instant trust. It then breaks down a complex outbound or inbound sales system into a simple, reproducible 5-step playbook.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Tutorial / Playbook",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Tactical & Transparent",
-      "ideal_for_niche": [
-        "Sales",
-        "Founders",
-        "Marketing"
-      ],
-      "key_psychological_trigger": "Realism & Process"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Tutorial / Playbook",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Tactical & Transparent",
+    "ideal_for_niche": [
+      "Sales",
+      "Founders",
+      "Marketing"
+    ]
   },
   {
     "id": "51",
     "name": "The Time Reclamation Checklist",
-    "description": "This format identifies a universal pain point (wasted time) and promises a specific, highly desirable outcome (reclaiming 15+ hours). It then delivers a comprehensive, step-by-step audit and automation checklist.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Playbook / Framework",
-      "hook_type": "How To / The List",
-      "primary_goal": "Authority",
-      "tone": "Instructional",
-      "ideal_for_niche": [
-        "Productivity",
-        "Tech",
-        "Founders"
-      ],
-      "key_psychological_trigger": "Time Scarcity"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Playbook / Framework",
+    "hook_type": "How To / The List",
+    "tone": "Instructional",
+    "ideal_for_niche": [
+      "Productivity",
+      "Tech",
+      "Founders"
+    ]
   },
   {
     "id": "52",
     "name": "The Matrix Taxonomy",
-    "description": "This format works by taking a confusing, overwhelming topic (like 'Which AI tool do I use?') and organizing it into a clear, relatable matrix or taxonomy. It positions the author as a master conductor of tools rather than just a user.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Tutorial / Framework",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Saves & Shares",
-      "tone": "Authoritative & Metaphorical",
-      "ideal_for_niche": [
-        "Tech",
-        "Productivity",
-        "Strategy"
-      ],
-      "key_psychological_trigger": "Clarity over Confusion"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Tutorial / Framework",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative & Metaphorical",
+    "ideal_for_niche": [
+      "Tech",
+      "Productivity",
+      "Strategy"
+    ]
   },
   {
     "id": "53",
     "name": "The Lived Experience Reminder",
-    "description": "A short, punchy TOFU post that demystifies content creation by reminding people that their everyday lives and work are the best sources of ideas. It flips the belief that you need to be doing spectacular things to write good content.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Mindset / Advice",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Reach & Engagement",
-      "tone": "Encouraging",
-      "ideal_for_niche": [
-        "Creators",
-        "Founders",
-        "Consultants"
-      ],
-      "key_psychological_trigger": "Validation"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Mindset / Advice",
+    "hook_type": "Belief Flip",
+    "tone": "Encouraging",
+    "ideal_for_niche": [
+      "Creators",
+      "Founders",
+      "Consultants"
+    ]
   },
   {
     "id": "54",
     "name": "The Procrastination Call-Out",
-    "description": "A 'Tough Love' contrarian post that attacks behaviors the audience thinks are positive (studying/planning) and labels them as a negative (procrastination). It provides a blunt 'action over theory' remedy.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Hot Take / Rant",
-      "hook_type": "The Call Out",
-      "primary_goal": "Engagement & Authority",
-      "tone": "Tough Love / Direct",
-      "ideal_for_niche": [
-        "Entrepreneurs",
-        "Creators",
-        "Coaches"
-      ],
-      "key_psychological_trigger": "Cognitive Dissonance"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Hot Take / Rant",
+    "hook_type": "The Call Out",
+    "tone": "Tough Love / Direct",
+    "ideal_for_niche": [
+      "Entrepreneurs",
+      "Creators",
+      "Coaches"
+    ]
   },
   {
     "id": "55",
     "name": "The Diagnostic Framework",
-    "description": "This format acts as a powerful lead magnet by teasing a framework that diagnoses exactly why people are failing. It uses a strong negative hook ('X out of Y are dead now') and a famous case study to prove the framework works.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Framework / Lead Magnet",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Lead Generation",
-      "tone": "Authoritative & Analytical",
-      "ideal_for_niche": [
-        "Founders",
-        "Consultants",
-        "Agencies"
-      ],
-      "key_psychological_trigger": "Curiosity & FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Framework / Lead Magnet",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Authoritative & Analytical",
+    "ideal_for_niche": [
+      "Founders",
+      "Consultants",
+      "Agencies"
+    ]
   },
   {
     "id": "56",
     "name": "The Vanity Metric Regret",
-    "description": "This format builds extreme trust by openly admitting to chasing vanity metrics and feeling miserable despite 'succeeding.' It then pivots to a healthier, more authentic system that prioritizes quality over quantity.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Personal Story",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Trust & Relatability",
-      "tone": "Vulnerable & Authentic",
-      "ideal_for_niche": [
-        "Creators",
-        "Founders",
-        "Coaches"
-      ],
-      "key_psychological_trigger": "Anti-Flex / High Status"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Personal Story",
+    "hook_type": "Belief Flip",
+    "tone": "Vulnerable & Authentic",
+    "ideal_for_niche": [
+      "Creators",
+      "Founders",
+      "Coaches"
+    ]
   },
   {
     "id": "57",
     "name": "The Zero to Hero Retrospective",
-    "description": "A comprehensive listicle framed as a look back from a point of success. It contrasts the struggle of 'Day 1' with the current reality, delivering a high volume of rapid-fire insights.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Listicle / Mindset",
-      "hook_type": "The Struggle",
-      "primary_goal": "Saves & Engagement",
-      "tone": "Inspirational & Dense",
-      "ideal_for_niche": [
-        "Creators",
-        "Consultants",
-        "Marketers"
-      ],
-      "key_psychological_trigger": "Aspiration & Utility"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Listicle / Mindset",
+    "hook_type": "The Struggle",
+    "tone": "Inspirational & Dense",
+    "ideal_for_niche": [
+      "Creators",
+      "Consultants",
+      "Marketers"
+    ]
   },
   {
     "id": "58",
     "name": "The 'Stupid-Simple' Workflow",
-    "description": "This format breaks down a seemingly complex, time-consuming task (like content creation or data analysis) into an automated, multi-tool workflow. It focuses heavily on the 'Time Saved' metric.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Tutorial / Teardown",
-      "hook_type": "How To",
-      "primary_goal": "Lead Generation",
-      "tone": "Tactical & Efficient",
-      "ideal_for_niche": [
-        "Tech",
-        "Marketing",
-        "Operations"
-      ],
-      "key_psychological_trigger": "Efficiency / Time Savings"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Tutorial / Teardown",
+    "hook_type": "How To",
+    "tone": "Tactical & Efficient",
+    "ideal_for_niche": [
+      "Tech",
+      "Marketing",
+      "Operations"
+    ]
   },
   {
     "id": "59",
     "name": "The Value vs. Insight Pivot",
-    "description": "This format deconstructs a common piece of advice ('give away free value') and explains why it fails to convert. It then introduces a higher-level concept ('Insight') that actually drives sales.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Methodology / Sales",
-      "hook_type": "The Struggle",
-      "primary_goal": "Conversion",
-      "tone": "Strategic & Direct",
-      "ideal_for_niche": [
-        "Marketers",
-        "Coaches",
-        "Agency Owners"
-      ],
-      "key_psychological_trigger": "Paradigm Shift"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Methodology / Sales",
+    "hook_type": "The Struggle",
+    "tone": "Strategic & Direct",
+    "ideal_for_niche": [
+      "Marketers",
+      "Coaches",
+      "Agency Owners"
+    ]
   },
   {
     "id": "60",
     "name": "The Hidden Motivation",
-    "description": "This format challenges a widely accepted belief about why people do things (like leaving jobs) and replaces it with a deeper, more emotional truth. It works exceptionally well for leadership and culture topics.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Opinion / Leadership",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Reach & Shares",
-      "tone": "Empathetic & Firm",
-      "ideal_for_niche": [
-        "HR",
-        "Leadership",
-        "Culture"
-      ],
-      "key_psychological_trigger": "Validation"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Opinion / Leadership",
+    "hook_type": "Belief Flip",
+    "tone": "Empathetic & Firm",
+    "ideal_for_niche": [
+      "HR",
+      "Leadership",
+      "Culture"
+    ]
   },
   {
     "id": "61",
     "name": "The Patience Reframe",
-    "description": "A vulnerable post that normalizes the 'sucking phase' of any new endeavor. It shifts the blame from external factors (the algorithm, the niche) to the internal process and patience.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Mindset / Advice",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Trust & Engagement",
-      "tone": "Vulnerable & Encouraging",
-      "ideal_for_niche": [
-        "Creators",
-        "Founders",
-        "Freelancers"
-      ],
-      "key_psychological_trigger": "Empathy"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Mindset / Advice",
+    "hook_type": "Belief Flip",
+    "tone": "Vulnerable & Encouraging",
+    "ideal_for_niche": [
+      "Creators",
+      "Founders",
+      "Freelancers"
+    ]
   },
   {
     "id": "62",
     "name": "The Platform Independence Playbook",
-    "description": "This format advises against relying on third-party platforms and champions building a personal 'identity' or brand. It uses a strong hypothetical 'start over' hook.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Strategy / Advice",
-      "hook_type": "How To / The Struggle",
-      "primary_goal": "Authority & Engagement",
-      "tone": "Direct & Strategic",
-      "ideal_for_niche": [
-        "Freelancers",
-        "Agencies",
-        "Creators"
-      ],
-      "key_psychological_trigger": "Security / Autonomy"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Strategy / Advice",
+    "hook_type": "How To / The Struggle",
+    "tone": "Direct & Strategic",
+    "ideal_for_niche": [
+      "Freelancers",
+      "Agencies",
+      "Creators"
+    ]
   },
   {
     "id": "63",
     "name": "The Invisible Enemy",
-    "description": "Identifies a deep psychological barrier (like imposter syndrome) and methodically deconstructs it, turning an emotional problem into a logical one that can be solved.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Psychology / Coaching",
-      "hook_type": "The Secret",
-      "primary_goal": "Conversion",
-      "tone": "Empathetic & Empowering",
-      "ideal_for_niche": [
-        "Coaching",
-        "Leadership",
-        "Personal Development"
-      ],
-      "key_psychological_trigger": "Relief / Transformation"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Psychology / Coaching",
+    "hook_type": "The Secret",
+    "tone": "Empathetic & Empowering",
+    "ideal_for_niche": [
+      "Coaching",
+      "Leadership",
+      "Personal Development"
+    ]
   },
   {
     "id": "64",
     "name": "The Lifestyle Design Story",
-    "description": "A deeply personal narrative that contrasts a chaotic, profit-driven past with a peaceful, system-driven present. It proves authority through lifestyle rather than just revenue.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Personal Story",
-      "hook_type": "The Struggle",
-      "primary_goal": "Lead Generation",
-      "tone": "Reflective & Aspirational",
-      "ideal_for_niche": [
-        "Solopreneurs",
-        "Consultants",
-        "Creators"
-      ],
-      "key_psychological_trigger": "Aspiration / Lifestyle"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Personal Story",
+    "hook_type": "The Struggle",
+    "tone": "Reflective & Aspirational",
+    "ideal_for_niche": [
+      "Solopreneurs",
+      "Consultants",
+      "Creators"
+    ]
   },
   {
     "id": "65",
     "name": "The Industry Insight",
-    "description": "A generalized template derived from high-performing content.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Insight",
-      "hook_type": "Standard",
-      "primary_goal": "Engagement",
-      "tone": "Professional",
-      "ideal_for_niche": [
-        "Business"
-      ],
-      "key_psychological_trigger": "Curiosity"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Insight",
+    "hook_type": "Standard",
+    "tone": "Professional",
+    "ideal_for_niche": [
+      "Business"
+    ]
   },
   {
     "id": "66",
     "name": "The Industry Insight",
-    "description": "A generalized template derived from high-performing content.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Insight",
-      "hook_type": "Standard",
-      "primary_goal": "Engagement",
-      "tone": "Professional",
-      "ideal_for_niche": [
-        "Business"
-      ],
-      "key_psychological_trigger": "Curiosity"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Insight",
+    "hook_type": "Standard",
+    "tone": "Professional",
+    "ideal_for_niche": [
+      "Business"
+    ]
   },
   {
     "id": "67",
     "name": "The Bright Side / Dark Side Contrast",
-    "description": "Contrasts a successful process against a failing one. Excellent for highlighting the importance of foundations over surface-level tactics.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Strategy / Teardown",
-      "hook_type": "The Contrast",
-      "primary_goal": "Authority",
-      "tone": "Analytical",
-      "ideal_for_niche": [
-        "Marketing",
-        "Product",
-        "Founders"
-      ],
-      "key_psychological_trigger": "Fear of Failure"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Strategy / Teardown",
+    "hook_type": "The Contrast",
+    "tone": "Analytical",
+    "ideal_for_niche": [
+      "Marketing",
+      "Product",
+      "Founders"
+    ]
   },
   {
     "id": "68",
     "name": "The Invisible Cage",
-    "description": "A deep psychological teardown of a successful client's internal struggles. Builds massive authority for coaching and consulting.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Client Story",
-      "hook_type": "The Secret",
-      "primary_goal": "Conversion",
-      "tone": "Empathetic & Transformational",
-      "ideal_for_niche": [
-        "Coaching",
-        "Leadership"
-      ],
-      "key_psychological_trigger": "Transformation"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Client Story",
+    "hook_type": "The Secret",
+    "tone": "Empathetic & Transformational",
+    "ideal_for_niche": [
+      "Coaching",
+      "Leadership"
+    ]
   },
   {
     "id": "69",
     "name": "The Industry Insight",
-    "description": "A generalized template derived from high-performing content.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Insight",
-      "hook_type": "Standard",
-      "primary_goal": "Engagement",
-      "tone": "Professional",
-      "ideal_for_niche": [
-        "Business"
-      ],
-      "key_psychological_trigger": "Curiosity"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Insight",
+    "hook_type": "Standard",
+    "tone": "Professional",
+    "ideal_for_niche": [
+      "Business"
+    ]
   },
   {
     "id": "70",
     "name": "The Wasted Potential Warning",
-    "description": "Calls out a specific audience who are underperforming not because of lack of skill, but because of poor environment/system design.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Mindset / Advice",
-      "hook_type": "The Call Out",
-      "primary_goal": "Engagement",
-      "tone": "Empathetic & Direct",
-      "ideal_for_niche": [
-        "Creatives",
-        "Freelancers",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Validation"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Mindset / Advice",
+    "hook_type": "The Call Out",
+    "tone": "Empathetic & Direct",
+    "ideal_for_niche": [
+      "Creatives",
+      "Freelancers",
+      "Tech"
+    ]
   },
   {
     "id": "71",
     "name": "The Industry Insight",
-    "description": "A generalized template derived from high-performing content.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Insight",
-      "hook_type": "Standard",
-      "primary_goal": "Engagement",
-      "tone": "Professional",
-      "ideal_for_niche": [
-        "Business"
-      ],
-      "key_psychological_trigger": "Curiosity"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Insight",
+    "hook_type": "Standard",
+    "tone": "Professional",
+    "ideal_for_niche": [
+      "Business"
+    ]
   },
   {
     "id": "72",
     "name": "The Ethical Loophole",
-    "description": "Addresses a controversial topic (like AI usage or 'cheating' algorithms) head-on. Owns the controversy to prove results.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Product Launch / Case Study",
-      "hook_type": "Thought-Provoking Question",
-      "primary_goal": "Conversion",
-      "tone": "Aggressive & Confident",
-      "ideal_for_niche": [
-        "SaaS",
-        "Founders",
-        "Marketing"
-      ],
-      "key_psychological_trigger": "Controversy / FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Product Launch / Case Study",
+    "hook_type": "Thought-Provoking Question",
+    "tone": "Aggressive & Confident",
+    "ideal_for_niche": [
+      "SaaS",
+      "Founders",
+      "Marketing"
+    ]
   },
   {
     "id": "73",
     "name": "The Cosmetic Fix Takedown",
-    "description": "Attacks surface-level tactics (like changing button colors) and provides a deep, foundational checklist for true success.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Teardown / Checklist",
-      "hook_type": "The Call Out",
-      "primary_goal": "Authority",
-      "tone": "Analytical & Blunt",
-      "ideal_for_niche": [
-        "Marketing",
-        "Design",
-        "CRO"
-      ],
-      "key_psychological_trigger": "Clarity"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Teardown / Checklist",
+    "hook_type": "The Call Out",
+    "tone": "Analytical & Blunt",
+    "ideal_for_niche": [
+      "Marketing",
+      "Design",
+      "CRO"
+    ]
   },
   {
     "id": "74",
     "name": "The Pivot Timeline",
-    "description": "A classic zero-to-hero timeline that highlights a specific, underrated skill as the catalyst for massive growth. Ends with a cohort/course pitch.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Product Launch",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Excited & Direct",
-      "ideal_for_niche": [
-        "Creators",
-        "Coaches",
-        "Educators"
-      ],
-      "key_psychological_trigger": "Social Proof"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Product Launch",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Excited & Direct",
+    "ideal_for_niche": [
+      "Creators",
+      "Coaches",
+      "Educators"
+    ]
   },
   {
     "id": "75",
     "name": "The False Milestone Call-Out",
-    "description": "A punchy, contrarian take that attacks a widely accepted cultural norm (like New Year's resolutions) to promote internal accountability.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Mindset / Advice",
-      "hook_type": "The Call Out",
-      "primary_goal": "Engagement & Reach",
-      "tone": "Blunt & Relatable",
-      "ideal_for_niche": [
-        "Coaching",
-        "Fitness",
-        "Productivity"
-      ],
-      "key_psychological_trigger": "Shared Guilt / Relatability"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Mindset / Advice",
+    "hook_type": "The Call Out",
+    "tone": "Blunt & Relatable",
+    "ideal_for_niche": [
+      "Coaching",
+      "Fitness",
+      "Productivity"
+    ]
   },
   {
     "id": "76",
     "name": "The Academic Authority Hook",
-    "description": "Leverages a recent study from a prestigious institution to validate a contrarian or warning-based opinion. Excellent for thought leadership.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Industry News / Opinion",
-      "hook_type": "Authority Name-Drop",
-      "primary_goal": "Engagement & Shares",
-      "tone": "Academic & Warning",
-      "ideal_for_niche": [
-        "Tech",
-        "Leadership",
-        "Education"
-      ],
-      "key_psychological_trigger": "Fear of Missing Out / Risk"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Industry News / Opinion",
+    "hook_type": "Authority Name-Drop",
+    "tone": "Academic & Warning",
+    "ideal_for_niche": [
+      "Tech",
+      "Leadership",
+      "Education"
+    ]
   },
   {
     "id": "77",
     "name": "The Inefficient Status Quo",
-    "description": "This format builds extreme empathy by vividly describing a painful, disorganized, manual process that the target audience currently uses, before introducing a software or system that solves it.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Product Launch / Pitch",
-      "hook_type": "The Struggle",
-      "primary_goal": "Conversion",
-      "tone": "Relatable & Direct",
-      "ideal_for_niche": [
-        "SaaS",
-        "Founders",
-        "Agencies"
-      ],
-      "key_psychological_trigger": "Frustration / Relief"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Product Launch / Pitch",
+    "hook_type": "The Struggle",
+    "tone": "Relatable & Direct",
+    "ideal_for_niche": [
+      "SaaS",
+      "Founders",
+      "Agencies"
+    ]
   },
   {
     "id": "78",
     "name": "The Tough Love Wake-up Call",
-    "description": "A highly philosophical, blunt post that attacks the psychological crutches holding people back (like waiting for permission).",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Mindset / Philosophy",
-      "hook_type": "Thought-Provoking Statement",
-      "primary_goal": "Engagement & Shares",
-      "tone": "Philosophical & Blunt",
-      "ideal_for_niche": [
-        "Coaches",
-        "Founders",
-        "Creators"
-      ],
-      "key_psychological_trigger": "Self-Reflection"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Mindset / Philosophy",
+    "hook_type": "Thought-Provoking Statement",
+    "tone": "Philosophical & Blunt",
+    "ideal_for_niche": [
+      "Coaches",
+      "Founders",
+      "Creators"
+    ]
   },
   {
     "id": "79",
     "name": "The Blind Spot Revelation",
-    "description": "Identifies a massive, quantified oversight (e.g., missing 75% of your audience) and provides a simple psychological or tactical breakdown to fix it.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Tutorial / Insight",
-      "hook_type": "The Mistake / Blind Spot",
-      "primary_goal": "Authority & Shares",
-      "tone": "Direct & Analytical",
-      "ideal_for_niche": [
-        "Designers",
-        "Marketers",
-        "Creators"
-      ],
-      "key_psychological_trigger": "Loss Aversion"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Tutorial / Insight",
+    "hook_type": "The Mistake / Blind Spot",
+    "tone": "Direct & Analytical",
+    "ideal_for_niche": [
+      "Designers",
+      "Marketers",
+      "Creators"
+    ]
   },
   {
     "id": "80",
     "name": "The Speed of Decision",
-    "description": "A short, punchy TOFU post that attacks the idea of 'getting it right' and replaces it with the necessity of 'getting it fast.' It reframes failure as feedback.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Mindset / Advice",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Engagement",
-      "tone": "Direct & Encouraging",
-      "ideal_for_niche": [
-        "Founders",
-        "Leadership",
-        "Startups"
-      ],
-      "key_psychological_trigger": "Relief"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Mindset / Advice",
+    "hook_type": "Belief Flip",
+    "tone": "Direct & Encouraging",
+    "ideal_for_niche": [
+      "Founders",
+      "Leadership",
+      "Startups"
+    ]
   },
   {
     "id": "81",
     "name": "The Definition Reframe",
-    "description": "Takes a common misunderstanding about a skill or service and redefines it by breaking it down into its true, complex components.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Service Pitch / Educational",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Authority & Conversion",
-      "tone": "Authoritative & Structured",
-      "ideal_for_niche": [
-        "Coaching",
-        "Consulting",
-        "Service Providers"
-      ],
-      "key_psychological_trigger": "Skill Gap Awareness"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Service Pitch / Educational",
+    "hook_type": "Belief Flip",
+    "tone": "Authoritative & Structured",
+    "ideal_for_niche": [
+      "Coaching",
+      "Consulting",
+      "Service Providers"
+    ]
   },
   {
     "id": "82",
     "name": "The Hidden Blocker",
-    "description": "Diagnoses the root cause of inaction. Instead of blaming the audience for being lazy, it validates their feeling of being 'stuck' and re-labels it as a systemic issue.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Case Study Teaser",
-      "hook_type": "The Secret",
-      "primary_goal": "Click-through / Conversion",
-      "tone": "Empathetic & Analytical",
-      "ideal_for_niche": [
-        "Career Coaching",
-        "Psychology",
-        "Tech"
-      ],
-      "key_psychological_trigger": "Removing Shame"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Case Study Teaser",
+    "hook_type": "The Secret",
+    "tone": "Empathetic & Analytical",
+    "ideal_for_niche": [
+      "Career Coaching",
+      "Psychology",
+      "Tech"
+    ]
   },
   {
     "id": "83",
     "name": "The Persistence Timeline",
-    "description": "A highly visual TOFU post that uses sequential data to prove that giving up early is the only real failure. Contrasts miserable early numbers with massive lifetime results.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Inspirational / Milestone",
-      "hook_type": "The Struggle",
-      "primary_goal": "Engagement & Lead Gen",
-      "tone": "Encouraging",
-      "ideal_for_niche": [
-        "Creators",
-        "Founders",
-        "Sales"
-      ],
-      "key_psychological_trigger": "Aspiration"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Inspirational / Milestone",
+    "hook_type": "The Struggle",
+    "tone": "Encouraging",
+    "ideal_for_niche": [
+      "Creators",
+      "Founders",
+      "Sales"
+    ]
   },
   {
     "id": "84",
     "name": "The Cautionary Tech Tale",
-    "description": "Tells a story of a hyped, trendy tool (like AI coding) failing spectacularly in the real world. Positions the author as the voice of reason and reality.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Story / Warning",
-      "hook_type": "The Mistake",
-      "primary_goal": "Engagement & Authority",
-      "tone": "Cautionary & Realistic",
-      "ideal_for_niche": [
-        "Software Dev",
-        "Agencies",
-        "Consulting"
-      ],
-      "key_psychological_trigger": "Schadenfreude / Validation"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Story / Warning",
+    "hook_type": "The Mistake",
+    "tone": "Cautionary & Realistic",
+    "ideal_for_niche": [
+      "Software Dev",
+      "Agencies",
+      "Consulting"
+    ]
   },
   {
     "id": "85",
     "name": "The Consistency Reframe",
-    "description": "This format dismantles the 'expert myth' by admitting that everyone is making it up as they go. It shifts the reader's focus from achieving perfection to maintaining consistency.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Mindset / Story",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Trust & Lead Gen",
-      "tone": "Empathetic & Encouraging",
-      "ideal_for_niche": [
-        "Creators",
-        "Founders",
-        "Coaches"
-      ],
-      "key_psychological_trigger": "Relief / Belonging"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Mindset / Story",
+    "hook_type": "Belief Flip",
+    "tone": "Empathetic & Encouraging",
+    "ideal_for_niche": [
+      "Creators",
+      "Founders",
+      "Coaches"
+    ]
   },
   {
     "id": "86",
     "name": "The Identity Shift",
-    "description": "A highly repetitive, rhythmic post that breaks the reader out of a narrow niche or tool-based identity and elevates them to a higher-level strategic identity.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Mindset / Industry Opinion",
-      "hook_type": "The Call Out",
-      "primary_goal": "Viral Reach & Shares",
-      "tone": "Authoritative & Elevating",
-      "ideal_for_niche": [
-        "Tech",
-        "Marketing",
-        "Design"
-      ],
-      "key_psychological_trigger": "Identity / Status"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Mindset / Industry Opinion",
+    "hook_type": "The Call Out",
+    "tone": "Authoritative & Elevating",
+    "ideal_for_niche": [
+      "Tech",
+      "Marketing",
+      "Design"
+    ]
   },
   {
     "id": "87",
     "name": "The Environment Contrast",
-    "description": "A stark, side-by-side comparison of a toxic environment versus a healthy environment. It validates the reader's frustration and empowers them to demand better.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Motivation / Career",
-      "hook_type": "The Contrast",
-      "primary_goal": "Shares & Engagement",
-      "tone": "Empathetic & Empowering",
-      "ideal_for_niche": [
-        "Career Coaching",
-        "Leadership",
-        "Freelance"
-      ],
-      "key_psychological_trigger": "Validation / Shift of Blame"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Motivation / Career",
+    "hook_type": "The Contrast",
+    "tone": "Empathetic & Empowering",
+    "ideal_for_niche": [
+      "Career Coaching",
+      "Leadership",
+      "Freelance"
+    ]
   },
   {
     "id": "88",
     "name": "The Valuation Teardown",
-    "description": "Uses a massive, breaking news number ($6.5B) to vindicate an underappreciated role or skill (Design). A brilliant way to hijack news to elevate your own industry.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Industry News / Opinion",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Viral Reach",
-      "tone": "Vindicating & Visionary",
-      "ideal_for_niche": [
-        "Design",
-        "Tech",
-        "Agency"
-      ],
-      "key_psychological_trigger": "Vindication / Status"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Industry News / Opinion",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Vindicating & Visionary",
+    "ideal_for_niche": [
+      "Design",
+      "Tech",
+      "Agency"
+    ]
   },
   {
     "id": "89",
     "name": "The Toxic vs Healthy Culture List",
-    "description": "A dual-list format that acts as an audit for company culture or leadership. It's highly scannable and prompts users to silently grade their own situations.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Checklist / Audit",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Reach & Lead Gen",
-      "tone": "Direct & Diagnostic",
-      "ideal_for_niche": [
-        "HR",
-        "Leadership",
-        "Management"
-      ],
-      "key_psychological_trigger": "Fear & Validation"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Checklist / Audit",
+    "hook_type": "Belief Flip",
+    "tone": "Direct & Diagnostic",
+    "ideal_for_niche": [
+      "HR",
+      "Leadership",
+      "Management"
+    ]
   },
   {
     "id": "90",
     "name": "The New Tech Stack Playbook",
-    "description": "Contrasts an outdated approach with a modern, highly efficient tech stack. Lists specific tools to build massive authority.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Playbook / Tools",
-      "hook_type": "The Call Out",
-      "primary_goal": "Saves & Shares",
-      "tone": "Tactical & Modern",
-      "ideal_for_niche": [
-        "Founders",
-        "Tech",
-        "Operations"
-      ],
-      "key_psychological_trigger": "FOMO / Utility"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Playbook / Tools",
+    "hook_type": "The Call Out",
+    "tone": "Tactical & Modern",
+    "ideal_for_niche": [
+      "Founders",
+      "Tech",
+      "Operations"
+    ]
   },
   {
     "id": "91",
     "name": "The Continuous Learner Mindset",
-    "description": "A motivational TOFU post that debunks 'natural talent' or 'smarts' as the key to success, replacing it with relentless curiosity and learning.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Motivation / Mindset",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Lead Generation",
-      "tone": "Inspirational & Direct",
-      "ideal_for_niche": [
-        "Creators",
-        "Coaches",
-        "Founders"
-      ],
-      "key_psychological_trigger": "Validation / Aspiration"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Motivation / Mindset",
+    "hook_type": "Belief Flip",
+    "tone": "Inspirational & Direct",
+    "ideal_for_niche": [
+      "Creators",
+      "Coaches",
+      "Founders"
+    ]
   },
   {
     "id": "92",
     "name": "The Fake Strategy Call-Out",
-    "description": "Calls out a specific department or role for confusing 'being busy' with 'being strategic.' It defines what real strategy looks like and challenges the reader to change.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Opinion / Leadership",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Engagement & Shares",
-      "tone": "Direct & Empowering",
-      "ideal_for_niche": [
-        "Operations",
-        "Data",
-        "Leadership"
-      ],
-      "key_psychological_trigger": "Validation / Burnout"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Opinion / Leadership",
+    "hook_type": "Belief Flip",
+    "tone": "Direct & Empowering",
+    "ideal_for_niche": [
+      "Operations",
+      "Data",
+      "Leadership"
+    ]
   },
   {
     "id": "93",
     "name": "The Rapid Upsell Blueprint",
-    "description": "Uses a specific, low initial financial number to prove accessibility, then shows the timeline of upselling that client to a higher number to prove expertise.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Case Study / Pitch",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Confident & Transparent",
-      "ideal_for_niche": [
-        "Freelancers",
-        "Agency Owners",
-        "Sales"
-      ],
-      "key_psychological_trigger": "Authority / Trust"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Case Study / Pitch",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Confident & Transparent",
+    "ideal_for_niche": [
+      "Freelancers",
+      "Agency Owners",
+      "Sales"
+    ]
   },
   {
     "id": "94",
     "name": "The Niche Positioning Reframe",
-    "description": "Uses a psychological principle (Hick's Law) to visually demonstrate why blending in kills conversions, and why hyper-niching works.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Strategy / Marketing",
-      "hook_type": "The Secret (Science)",
-      "primary_goal": "Engagement & Authority",
-      "tone": "Educational & Visual",
-      "ideal_for_niche": [
-        "Design",
-        "Marketing",
-        "Copywriting"
-      ],
-      "key_psychological_trigger": "Pattern Interrupt"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Strategy / Marketing",
+    "hook_type": "The Secret (Science)",
+    "tone": "Educational & Visual",
+    "ideal_for_niche": [
+      "Design",
+      "Marketing",
+      "Copywriting"
+    ]
   },
   {
     "id": "95",
     "name": "The Stealth Launch Timeline",
-    "description": "Documents the chaotic, multi-year journey of a product before dropping a massive success metric. Acts as a 'building in public' flex while launching a product.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Product Launch / Story",
-      "hook_type": "Big Number vs Small Number",
-      "primary_goal": "Conversion",
-      "tone": "Reflective & Triumphant",
-      "ideal_for_niche": [
-        "SaaS",
-        "Founders",
-        "Creators"
-      ],
-      "key_psychological_trigger": "Authenticity / FOMO"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Product Launch / Story",
+    "hook_type": "Big Number vs Small Number",
+    "tone": "Reflective & Triumphant",
+    "ideal_for_niche": [
+      "SaaS",
+      "Founders",
+      "Creators"
+    ]
   },
   {
     "id": "96",
     "name": "The Evolution of Content Strategy",
-    "description": "Contrasts an immature 'reach-chasing' past with a mature 'relationship-building' present. Validates the reader's current lack of leads by blaming bad metrics.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Mindset / Strategy",
-      "hook_type": "The Struggle",
-      "primary_goal": "Trust & Engagement",
-      "tone": "Authentic & Conversational",
-      "ideal_for_niche": [
-        "Creators",
-        "Marketers",
-        "Coaches"
-      ],
-      "key_psychological_trigger": "Relief"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Mindset / Strategy",
+    "hook_type": "The Struggle",
+    "tone": "Authentic & Conversational",
+    "ideal_for_niche": [
+      "Creators",
+      "Marketers",
+      "Coaches"
+    ]
   },
   {
     "id": "97",
     "name": "The Failure vs Success Playbook",
-    "description": "A stark dual-list format that breaks down exactly why people fail versus exactly what they should do to succeed. Highly scannable.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Playbook / Teardown",
-      "hook_type": "The Mistake",
-      "primary_goal": "Authority & Shares",
-      "tone": "Direct & Analytical",
-      "ideal_for_niche": [
-        "Founders",
-        "Consultants",
-        "Product"
-      ],
-      "key_psychological_trigger": "Fear of Failure"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Playbook / Teardown",
+    "hook_type": "The Mistake",
+    "tone": "Direct & Analytical",
+    "ideal_for_niche": [
+      "Founders",
+      "Consultants",
+      "Product"
+    ]
   },
   {
     "id": "98",
     "name": "The Silent Observer Reframe",
-    "description": "Validates a common fear (getting ignored) by reframing silence as a sign of deep impact. Shifts the focus from engagement to trust.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Psychology / Strategy",
-      "hook_type": "Belief Flip",
-      "primary_goal": "Trust & Engagement",
-      "tone": "Empathetic & Insightful",
-      "ideal_for_niche": [
-        "Sales",
-        "Marketers",
-        "Creators"
-      ],
-      "key_psychological_trigger": "Validation / Relief"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Psychology / Strategy",
+    "hook_type": "Belief Flip",
+    "tone": "Empathetic & Insightful",
+    "ideal_for_niche": [
+      "Sales",
+      "Marketers",
+      "Creators"
+    ]
   },
   {
     "id": "99",
     "name": "The ROI Objection Handler",
-    "description": "Takes the most common objection to a strategy (e.g., 'it takes too long') and dismantles it by showing the massive compound returns of that strategy.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Story / Service Pitch",
-      "hook_type": "The Objection",
-      "primary_goal": "Authority & Conversion",
-      "tone": "Confident & Transformational",
-      "ideal_for_niche": [
-        "Agency Owners",
-        "Service Providers",
-        "Creators"
-      ],
-      "key_psychological_trigger": "Aspiration / ROI"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Story / Service Pitch",
+    "hook_type": "The Objection",
+    "tone": "Confident & Transformational",
+    "ideal_for_niche": [
+      "Agency Owners",
+      "Service Providers",
+      "Creators"
+    ]
   },
   {
     "id": "100",
     "name": "The Uncomfortable Experiment",
-    "description": "A highly provocative format that shares a controversial experiment to reveal a harsh truth about human psychology or market dynamics. Excellent for driving debate.",
-    "metadata": {
-      "funnel_stage": "TOFU",
-      "content_category": "Experiment / Insight",
-      "hook_type": "The Secret (Controversial)",
-      "primary_goal": "Viral Reach & Debate",
-      "tone": "Blunt & Realist",
-      "ideal_for_niche": [
-        "Marketing",
-        "Sales",
-        "Psychology"
-      ],
-      "key_psychological_trigger": "Curiosity / Shock Value"
-    }
+    "funnel_stage": "TOFU",
+    "content_category": "Experiment / Insight",
+    "hook_type": "The Secret (Controversial)",
+    "tone": "Blunt & Realist",
+    "ideal_for_niche": [
+      "Marketing",
+      "Sales",
+      "Psychology"
+    ]
   },
   {
     "id": "101",
     "name": "The Anti-Identity Declaration",
-    "description": "Firmly rejects a popular industry label (like 'solopreneur') to define a much larger, more ambitious business model. Acts as a strong positioning statement.",
-    "metadata": {
-      "funnel_stage": "MOFU",
-      "content_category": "Positioning / Strategy",
-      "hook_type": "The Call Out",
-      "primary_goal": "Authority & Branding",
-      "tone": "Confident & Dominant",
-      "ideal_for_niche": [
-        "Founders",
-        "Venture Capital",
-        "Strategy"
-      ],
-      "key_psychological_trigger": "Status Elevation"
-    }
+    "funnel_stage": "MOFU",
+    "content_category": "Positioning / Strategy",
+    "hook_type": "The Call Out",
+    "tone": "Confident & Dominant",
+    "ideal_for_niche": [
+      "Founders",
+      "Venture Capital",
+      "Strategy"
+    ]
   },
   {
     "id": "102",
     "name": "The 'Just Kept Breaking' Fix",
-    "description": "Starts with a direct quote of a common customer frustration. Diagnoses the 'invisible' skipped step that caused the failure, and offers a structural blueprint as the fix.",
-    "metadata": {
-      "funnel_stage": "BOFU",
-      "content_category": "Service Pitch / Diagnostic",
-      "hook_type": "The Quote / The Struggle",
-      "primary_goal": "Conversion",
-      "tone": "Authoritative & Helpful",
-      "ideal_for_niche": [
-        "SaaS",
-        "Consulting",
-        "Agencies"
-      ],
-      "key_psychological_trigger": "Frustration Relief"
-    }
+    "funnel_stage": "BOFU",
+    "content_category": "Service Pitch / Diagnostic",
+    "hook_type": "The Quote / The Struggle",
+    "tone": "Authoritative & Helpful",
+    "ideal_for_niche": [
+      "SaaS",
+      "Consulting",
+      "Agencies"
+    ]
   }
 ]

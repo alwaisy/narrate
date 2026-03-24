@@ -9,7 +9,7 @@ log_step "--- ENGINE START: Initiating Full-Auto Workflow ---"
 
 # 1. Discovery Phase
 log_step "Phase 1: Scouting niche subreddits..."
-bash lib/index_templates.sh
+bash lib/build_index.sh
 bash lib/reddit.sh
 
 # 2. Intelligence Hand-off

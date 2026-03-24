@@ -1,0 +1,19 @@
+description = "Raw Text Mode: Raw Text -> Master Execution."
+prompt = """
+[PRE-FLIGHT VALIDATION]:
+- Verify that `{{text}}` is not empty.
+- Verify that `{{text}}` contains more than 100 characters to ensure enough context for 3 posts.
+- If validation fails, STOP and ask the user for more descriptive source material.
+
+1. LOAD PROTOCOL: Read ALL files in 'foundation/', specifically 'MASTER_EXECUTION_RULES.md' and 'awais-icp (1).md'.
+2. RELEVANCE GATE: Check relevance of the text against 'foundation/awais-icp (1).md'. If it's a meme, rant with no product, or unrelated industry, stop and explain why.
+3. EXECUTE MASTER STEPS: Follow the 7-step granular workflow defined in 'MASTER_EXECUTION_RULES.md'.
+   - Treat the provided text as the core source material.
+   - PIVOT: Change any first-person 'I' to 'They/The founder' in all posts if the text is written by a founder.
+4. MEMORY: Save final outputs to '/content/posts/[PKT_TIME]_raw-text/' and update 'content/processed_sources.json'.
+
+Begin now using this text:
+\"\"\"
+{{text}}
+\"\"\"
+"""

@@ -11,7 +11,7 @@ CURRENT_TIME_PKT=$(date +"%Y-%m-%d_%I-%M-%p")
 # Logging
 LOG_FILE="$PROJECT_ROOT/logs/execution.log"
 SESSION_LOG="$PROJECT_ROOT/logs/session_${CURRENT_TIME_PKT}.log"
-PROCESSED_THREADS_LOG="$PROJECT_ROOT/content/processed_threads.json"
+PROCESSED_SOURCES_LOG="$PROJECT_ROOT/content/processed_sources.json"
 
 # High-Signal Subreddits (Refined & Expanded)
 SUBREDDITS=(
