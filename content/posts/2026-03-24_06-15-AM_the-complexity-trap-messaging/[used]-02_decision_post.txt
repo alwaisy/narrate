@@ -1,0 +1,50 @@
+One founder built for B2B. Another built for B2C.
+
+For the exact same type of software.
+
+Both wanted a successful launch.
+
+The B2B launch:
+-> Added massive feature lists.
+-> Priced it high.
+-> Reassured the procurement team.
+
+The B2C launch (PostClaw):
+-> Showed a raw 30-second video.
+-> Cut the price in half.
+-> Delivered a quick win.
+
+The development time was identical.
+
+B2B project:
+- Reassures through complexity.
+- Sells to a company budget.
+- Survives on features.
+
+B2C project:
+- Dies from complexity.
+- Sells against a Netflix subscription.
+- Survives on simplicity.
+
+They were not building different code.
+
+They were dealing with different psychology.
+
+B2B understands: Complexity is a confidence signal.
+
+B2C believes: Complexity is a churn signal.
+
+The real conversion breakdown:
+
+B2B buyer: Pays for depth.
+B2C buyer: Pays for relief from frustration.
+
+Here is what they learned:
+
+Some users buy features.
+Most users buy time.
+
+The product is the same.
+The translation of value is entirely different.
+
+Because what feels like value to a builder feels like homework to a user.

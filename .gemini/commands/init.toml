@@ -1,0 +1,420 @@
+description = "Initialize AI context by analyzing codebase and creating/updating GEMINI.md (Factory AI version)"
+prompt = '''
+Act as a Senior Lead Architect. I want to initialize this repository for AI-assisted development, creating a comprehensive GEMINI.md that works as the primary context for Gemini CLI and other AI coding agents.
+
+## Primary Tasks
+
+### 1. Deep Codebase Analysis
+Recursively scan the project (ignoring node_modules, .git, dist, build, .next, .nuxt) to identify:
+
+**Tech Stack Detection:**
+- Languages: TypeScript, JavaScript, Python, Go, Rust, etc.
+- Frameworks: Nuxt, Next.js, Express, Django, FastAPI, etc.
+- Package managers: Bun, npm, pnpm, yarn, pip, cargo
+- Databases: PostgreSQL, MongoDB, SQLite, Redis
+- ORM/Query builders: Drizzle, Prisma, SQLAlchemy, etc.
+- Key libraries from package.json, requirements.txt, go.mod
+- Testing frameworks: Vitest, Jest, Pytest, etc.
+- Styling: Tailwind, CSS Modules, styled-components, SCSS
+
+**Architecture Patterns:**
+- Overall pattern: MVC, DDD, microservices, monorepo, etc.
+- Routing: App Router vs Pages Router, file-based vs config
+- API style: REST, GraphQL, tRPC, gRPC
+- State management: Redux, Zustand, Context, signals
+- Authentication/authorization flow
+- Middleware and plugin architecture
+- Data flow and request lifecycle
+
+**Coding Standards & Conventions:**
+- Naming: camelCase, snake_case, PascalCase, kebab-case
+- File structure: colocation, separation of concerns, barrel exports
+- Component patterns: functional vs class, hooks vs HOCs
+- Import patterns: absolute vs relative, @ aliases
+- Error handling: try/catch, Result types, error boundaries
+- Async patterns: callbacks, promises, async/await
+- Type safety: TypeScript strict mode, interfaces vs types, generics
+- Testing approach: unit vs integration, mocking strategies
+- Git workflow: branching strategy, commit message format
+
+**Project-Specific Patterns:**
+- API route organization
+- Database schema and migration patterns
+- Environment variable usage
+- Logging and monitoring setup
+- Deployment and CI/CD pipeline
+- Performance optimization patterns
+- Security measures (input validation, sanitization)
+
+### 2. Context Gathering
+Read and integrate from existing files:
+- **README.md** - project overview, setup instructions, key features
+- **GEMINI.md** (if exists) - preserve valuable content, improve structure
+- **CLAUDE.md** - convert to GEMINI.md format, merge insights
+- **.cursorrules** or **.cursor/rules/** - Cursor-specific rules
+- **.github/copilot-instructions.md** - Copilot rules
+- **package.json** - extract ALL scripts, dependencies, dev dependencies
+- **tsconfig.json** - TypeScript configuration, path aliases
+- **.env.example** - required environment variables
+- **docker-compose.yml**, **Dockerfile** - containerization setup
+- **CI/CD configs** - GitHub Actions, GitLab CI, etc.
+- **Config files** - ESLint, Prettier, Jest, Vitest, etc.
+
+### 3. Create Comprehensive GEMINI.md
+
+Follow this structure but enhance with all best practices:
+
+```markdown
+# [Project Name]
+
+[One-paragraph overview: what this application does, who it's for, key value proposition]
+
+## Build & Test
+
+• Install dependencies: `[exact command from package.json]`
+• Start development server: `[exact command]`
+• Build for production: `[exact command]`
+• Run full test suite: `[exact command]`
+• Run single test file: `[exact command]`
+• Run tests in watch mode: `[exact command]`
+• Lint code: `[exact command]`
+• Auto-fix lint issues: `[exact command]`
+• Type check: `[exact command]`
+• Format code: `[exact command]`
+
+[Extract EXACT commands from package.json scripts section]
+
+## Project Layout
+
+├─ [directory]/ → [purpose]
+├─ [directory]/ → [purpose]
+│  ├─ [subdir]/ → [sub-purpose]
+│  └─ [subdir]/ → [sub-purpose]
+└─ [directory]/ → [purpose]
+
+[Show 5-10 key directories with their purposes]
+[Note any important file colocation patterns]
+[Mention path aliases if used (e.g., @/, @/components)]
+
+## Architecture Overview
+
+[2-3 paragraphs covering:
+1. Overall structure and pattern (MVC, DDD, layer architecture)
+2. Key modules and their responsibilities
+3. Request/response flow and data lifecycle
+4. Important architectural decisions (why this approach)
+5. Integration points (database, external APIs, services)]
+
+## Development Patterns & Constraints
+
+### Coding Style
+• [Language]: [specific rules, e.g., TypeScript strict mode]
+• Formatting: [quotes style, semicolons, trailing commas, line length]
+• Indentation: [tabs vs spaces, size]
+• Naming: [variables, functions, classes, files, constants]
+• Imports: [absolute vs relative, alias usage, barrel exports]
+• Exports: [named vs default, consistency patterns]
+
+### Component/File Patterns
+• [Component structure: functional, hooks, props pattern]
+• [File organization: colocation, separation, index files]
+• [Type definitions: where they live, how they're imported]
+• [Styling approach: CSS modules, Tailwind, styled-components]
+• [Asset handling: images, fonts, static files]
+
+### Error Handling
+• [Approach: try/catch, error boundaries, Result types]
+• [Logging strategy: console, winston, pino]
+• [User feedback: toast notifications, error pages]
+• [Monitoring: Sentry, analytics]
+
+### Async Patterns
+• [Preferred: async/await, promises, callbacks]
+• [Loading states: how they're managed]
+• [Caching strategy: React Query, SWR, custom]
+
+### Testing Patterns
+• [Unit vs integration vs e2e balance]
+• [Mocking strategy: what gets mocked]
+• [Test naming conventions]
+• [Coverage requirements]
+
+## Security
+
+• Authentication: [JWT, sessions, OAuth, NextAuth, etc.]
+• Authorization: [RBAC, ABAC, middleware checks]
+• API keys: [how they're managed, rotation policy]
+• Sensitive data: [secrets, PII, encryption at rest/transit]
+• Input validation: [Zod, Yup, manual validation]
+• Output sanitization: [XSS prevention, CSP headers]
+• Rate limiting: [implementation, thresholds]
+• CORS policy: [allowed origins, credentials]
+• Dependencies: [audit policy, supply chain security]
+
+## Git Workflows
+
+• Branching strategy: [main, develop, feature/*, bugfix/*, hotfix/*]
+• Commit conventions: [Conventional Commits, format, required scopes]
+• PR requirements: [description template, reviewers, checks]
+• Protected branches: [which branches, what protections]
+• Force push policy: [allowed on feature branches only, never on main]
+• PR merge method: [squash and merge, merge commit, rebase]
+• Semantic versioning: [how versions are managed]
+
+## Evidence Required for Every PR
+
+A pull request is reviewable when it includes:
+
+• All tests passing: `[command to verify]`
+• Lint and type check passing: `[command to verify]`
+• Diff confined to agreed paths: [list allowed directories]
+• **Proof artifact**:
+  - Bug fix → failing test added first, now passes
+  - Feature → new tests or screenshots demonstrating behavior
+  - Refactor → performance benchmarks or coverage maintained
+• One-paragraph description covering intent and approach
+• No drop in test coverage
+• No unexplained runtime dependencies added
+• Documentation updated if API/user-facing changed
+
+## External Services
+
+• [Service name] - `[ENV_VAR_NAME]` - [purpose and usage]
+• [Service name] - `[ENV_VAR_NAME]` - [purpose and usage]
+
+[Extract from .env.example and actual usage in code]
+
+## Gotchas & Common Pitfalls
+
+• [Specific issue that causes bugs and how to avoid it]
+• [Test snapshot paths are absolute - run `npm test -- -u` after moves]
+• [Build fails if [specific condition] - check [specific thing]]
+• [Cache invalidation requires [specific step]]
+• [Environment variable must be set for [feature] to work]
+• [Import order matters for [specific reason]]
+• [Database migrations must run before [specific operation]]
+
+[Non-obvious issues learned from actual codebase maintenance]
+
+## Performance Considerations
+
+• [Critical performance hotspots]
+• [Optimization strategies already implemented]
+• [Monitoring: Lighthouse, Web Vitals, custom metrics]
+• [Bundle size concerns and code splitting strategies]
+
+## Deployment
+
+• [Build process: commands, environment setup]
+• [Hosting platform: Vercel, Netlify, AWS, etc.]
+• [CI/CD pipeline: GitHub Actions, etc.]
+• [Environment-specific configurations]
+• [Rollback procedures]
+
+---
+
+**Keep it concise but complete. Aim for 140-200 lines. Every line should provide actionable information not easily discoverable from README or code structure.**
+```
+
+## Important Guidelines
+
+**DO:**
+✅ Use `# Build & Test`, `# Architecture Overview`, etc.
+✅ Include EXACT commands from package.json in backticks
+✅ Focus on "big picture" architecture requiring reading multiple files
+✅ Capture non-obvious patterns and conventions
+✅ Reference existing docs with links instead of duplicating
+✅ Be specific and actionable
+✅ Include project-specific workflows and gotchas
+✅ Keep it concise (140-200 lines recommended)
+
+**DO NOT:**
+❌ Repeat information easily discoverable from README
+❌ Include generic advice ("write clean code", "add tests")
+❌ List every component or file structure
+❌ Make up information not based on actual analysis
+❌ Include obvious best practices
+❌ Add fluff - agents need signal, not noise
+❌ Create sections like "Common Development Tasks" unless actually in project docs
+❌ Include "Tips for Development" or generic sections
+
+## Special Instructions
+
+If $ARGUMENTS contains "overwrite", replace existing GEMINI.md entirely.
+If $ARGUMENTS contains "update" or is empty, improve existing GEMINI.md.
+
+After creating/updating GEMINI.md:
+1. Confirm the file was written successfully with path
+2. Provide summary of sections added/changed
+3. Highlight key architectural decisions discovered
+4. Note any missing documentation that would be valuable
+5. Mention file size (aim for 140-200 lines)
+
+---
+
+**Note:** Creates/Updates GEMINI.md which is the foundational context for Gemini CLI. Use a reasoning model (GPT-5 Mini, Claude Opus) for best results with complex codebases.
+
+## Primary Tasks (v2)
+
+### 1. Codebase Analysis
+Recursively scan the project (ignoring node_modules, .git, dist, build) to identify:
+
+**Tech Stack Detection:**
+- Languages: TypeScript, JavaScript, Python, Go, Rust, etc.
+- Frameworks: Nuxt, Next.js, Express, Django, FastAPI, etc.
+- Package managers: Bun, npm, pnpm, yarn, pip, cargo
+- Databases: PostgreSQL, MongoDB, SQLite, Redis
+- Key libraries from package.json, requirements.txt, go.mod
+- Testing frameworks: Vitest, Jest, Pytest, etc.
+
+**Architecture Patterns:**
+- App Router vs Pages Router
+- MVC, DDD, or microservices
+- Monorepo structure (if applicable)
+- API organization (REST, GraphQL, tRPC, gRPC)
+- State management approach
+- Authentication/authorization patterns
+
+**Coding Standards:**
+- Naming conventions (camelCase, snake_case, PascalCase)
+- File organization patterns
+- Preferred code patterns (functional vs class-based)
+- Styling approach (CSS modules, Tailwind, styled-components)
+- Error handling patterns
+- Async patterns (async/await, promises, callbacks)
+
+### 2. Context Gathering
+Read and integrate from existing files:
+- README.md - project overview and setup
+- GEMINI.md (if exists) - preserve and improve
+- CLAUDE.md - convert to GEMINI.md format
+- .cursorrules or .cursor/rules/** - Cursor-specific rules
+- .github/copilot-instructions.md - Copilot rules
+- package.json - scripts and dependencies
+- tsconfig.json - TypeScript configuration
+- .env.example - environment variables
+
+### 3. GEMINI.md Structure
+Create/update GEMINI.md with these sections:
+
+```markdown
+# [Project Name]
+
+[Brief 2-3 sentence project overview]
+
+## Build & Test
+
+• Install dependencies: `[command]`
+• Development server: `[command]`
+• Build for production: `[command]`
+• Run tests: `[command]`
+• Run single test: `[command]`
+• Lint: `[command]`
+• Type check: `[command]`
+• Auto-fix issues: `[command]`
+
+[Extract exact commands from package.json scripts]
+
+## Project Layout
+
+├─ [directory]/ → [purpose]
+├─ [directory]/ → [purpose]
+└─ [directory]/ → [purpose]
+
+[Show key directories and their purposes in tree format]
+
+## Architecture Overview
+
+[One paragraph describing:
+- Overall structure and pattern (MVC, DDD, etc.)
+- Major modules and their interactions
+- Data flow and request lifecycle
+- Key architectural decisions]
+
+## Development Patterns & Constraints
+
+Coding style
+• [Language-specific rules: TypeScript strict mode, Python type hints, etc.]
+• [Formatting: quotes, semicolons, line length, indentation]
+• [Naming conventions: variables, files, components]
+• [Import patterns: absolute vs relative, barrel exports]
+• [Error handling approach]
+• [Async patterns: callbacks, promises, async/await]
+
+[Observed patterns from actual codebase]
+
+## Security
+
+• [Authentication approach: JWT, sessions, OAuth, etc.]
+• [API key management: environment variables]
+• [Sensitive data handling: secrets, tokens, PII]
+• [Rate limiting and throttling]
+• [CORS and CSP policies]
+
+[Extract from actual auth/security implementation]
+
+## Git Workflows
+
+• [Branching strategy: main, develop, feature branches]
+• [Commit conventions: conventional commits, format]
+• [PR requirements: reviews, tests, checks]
+• [Protected branches: main, release]
+• [Force push policy]
+
+[Extract from actual git configuration and workflows]
+
+## Evidence Required for Every PR
+
+• [All tests pass with command]
+• [Lint and type check pass]
+• [Diff confined to specific paths]
+• [Proof artifact: failing tests, screenshots, benchmarks]
+• [Documentation updated if needed]
+• [No unexplained dependencies added]
+
+[Project-specific PR requirements]
+
+## External Services
+
+• [Service name] - `[ENV_VAR]` - [purpose]
+• [Service name] - `[ENV_VAR]` - [purpose]
+
+[List external dependencies from .env.example and code]
+
+## Gotchas
+
+• [Specific gotcha that causes issues]
+• [Test snapshot paths are absolute/relative]
+• [Build requires specific environment setup]
+• [Cache invalidation requirements]
+
+[Non-obvious issues discovered from actual codebase]
+```
+
+## Writing Rules - Follow These Strictly
+
+You must follow these writing rules in every response:
+
+### 1. Banned AI Words
+Never use these overused AI words:
+{delve, realm, harness, unlock, tapestry, paradigm, cutting-edge, revolutionize, landscape, potential, findings, intricate, showcasing, crucial, pivotal, surpass, meticulously, vibrant, unparalleled, underscore, leverage, synergy, innovative, game-changer, testament, commendable, meticulous, highlight, emphasize, boast, groundbreaking, align, foster, showcase, enhance, holistic, garner, accentuate, pioneering, trailblazing, unleash, versatile, transformative, redefine, seamless, optimize, scalable, robust, breakthrough, empower, streamline, intelligent, smart, next-gen, frictionless, elevate, adaptive, effortless, data-driven, insightful, proactive, mission-critical, visionary, disruptive, reimagine, agile, customizable, personalized, unprecedented, intuitive, leading-edge, synergize, democratize, automate, accelerate, state-of-the-art, dynamic, reliable, efficient, cutting-edge, cloud-native, immersive, predictive, scalable, transparent, proprietary, integrated, plug-and-play, turnkey, future-proof, open-ended, AI-powered, next-generation, always-on, hyper-personalized, results-driven, machine-first, paradigm-shifting}
+
+### 2. Banned AI Expression Patterns
+Avoid formulaic patterns like "In a world where...", "Most people vs few who...", "Stop doing X. Start doing Y.", "It's not X. It's not Y. It's Z.", "If you're not doing X, you're already behind.", "The real work is...", "You don't need more X. You need Y.", "It's never been easier / harder", "Here's the truth / nobody tells you".
+
+### 3. Em-Dash Rule
+Replace em-dashes ("—") with periods or commas.
+
+### 4. Conversion-Focused Copy Principles
+Use casual, friendly language. Frame actions as progress, not commitments. Stay positive.
+
+### 5. Writing Style
+- Keep responses natural, warm, and conversational.
+- Write in shorter sentences and paragraphs.
+- Avoid corporate buzzwords and jargon.
+- Be direct and honest.
+- Use specific numbers and concrete examples.
+- Sound like a real human talking.
+
+{{args}}
+'''

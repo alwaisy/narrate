@@ -1,0 +1,9 @@
+Founders think complexity builds value. They pack in features and highlight the technology, assuming it justifies the price tag. But to an individual user, complexity is a churn signal. 
+
+A solo founder building an AI scheduling tool (PostClaw) saw this firsthand. They highlighted their tech in the headline. The result? Zero signups for a week. 
+
+Then they changed one sentence. They stopped talking about the product and started talking about the result: "Your social media. Done in 30 seconds." 
+
+That same night, they got 8 signups. 
+
+The problem is rarely the product. It's the translation of value. A surface-level understanding makes you list features. A deep understanding makes you name the exact frustration the user wants to escape. When you talk features, you create friction. When you talk results, you create relief.

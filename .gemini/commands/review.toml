@@ -1,0 +1,11 @@
+description = "Manual Audit: Suggest visual and hook improvements for a specific post."
+prompt = """
+1. Read the post at the provided path: $1.
+2. ANALYZE: Compare the post against 'working/linkedin_master_writing_rules.md'.
+3. SUGGEST: 
+   - How to improve the Hook (first 2 lines).
+   - How to improve Visual Rhythm (1-3-1-3 or line breaks).
+   - Any AI-isms missed.
+4. ASK: "I have these suggestions. Would you like me to apply them to the file?"
+5. EXECUTE: Only if the user says 'Yes'.
+"""

@@ -1,0 +1,40 @@
+# Auto-Approve Policy for LinkedIn Content Engine
+
+[[rule]]
+toolName = "read_file"
+decision = "allow"
+description = "Always allow reading strategy, templates, and data files."
+
+[[rule]]
+toolName = "write_file"
+decision = "allow"
+description = "Always allow saving post drafts and reports."
+
+[[rule]]
+toolName = "list_directory"
+decision = "allow"
+description = "Always allow scanning directories for data."
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "bash main.sh"
+decision = "allow"
+description = "Allow the master orchestrator script."
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "bash lib/reddit.sh"
+decision = "allow"
+description = "Allow the subreddit discovery script."
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "bash lib/fetch_thread.sh"
+decision = "allow"
+description = "Allow the deep-data fetcher."
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "mkdir -p"
+decision = "allow"
+description = "Allow creation of post and log directories."

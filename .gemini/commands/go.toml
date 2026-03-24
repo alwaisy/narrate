@@ -1,0 +1,49 @@
+description = "The Master Content Engine: 9-Step Template-First Workflow."
+prompt = """
+Execute the Full-Auto master workflow. Follow these 9 steps strictly:
+
+Step 1: SCOUTING (Bash)
+- Run 'bash main.sh' to fetch the latest single threads from 16 high-signal subreddits.
+
+Step 2: PATTERN RECOGNITION (Brain)
+- Analyze fetched JSONs. Merge 3 related threads into ONE high-authority Master Topic.
+- Identify the 'Problem-First' angle across these stories.
+
+Step 3: FIRST FOUNDATION PASS (Brain)
+- Read ALL files in 'foundation/'. Priming the 'Media Analyst Scout' identity. 
+- You are NOT a freelancer. You are NOT the founder. You are an observer.
+
+Step 4: DEEP EXTRACTION (Bash)
+- Fetch the full body and comments for the selected threads to get specific 'Golden Nuggets'.
+
+Step 5: SECOND FOUNDATION PASS (Brain)
+- Re-skim 'foundation/awais-content-strategy.docx.md'. Ensure the logic is 'Problem -> Solution -> Product -> Founder'.
+
+Step 6: BRAIN DRAFT (Plain Text)
+- Prepare 3 distinct angles (Problem, Decision, Honest) in plain text paragraphs. 
+- Focus on raw insight and the 'Media Analyst' voice.
+- [MANDATORY]: Save these raw drafts to '/content/drafts/[PKT_TIME]_[Topic_Slug]/'.
+
+Step 7: TEMPLATE-LOCKED DRAFTING (Brain)
+- Pick 3 templates from 'working/template_index.json'. 
+- [COOL-DOWN RULE]: Scan the last 10 session reports in 'reports/' and EXCLUDE any Template IDs found there. This ensures a rotation of 30+ unique templates.
+- Fetch the full structure from 'working/linkedin-templates.json' for the chosen IDs.
+- [STRICT]: Copy the literal 'structure' and 'formatting' from the JSON.
+- [SHRINK TO FIT]: If the Reddit story is shorter than the template, DELETE the extra template sections (bullets/tiers). NEVER hallucinate new facts to fill space.
+- [COPY FIX]: Rewrite the content to fit the Media Scout voice. 
+- [PIVOT]: Change any 'I' (freelancer) language to 'They/The founder' (scouted product).
+- [CTA PIVOT]: Replace any service-sales CTAs with Media Engagement CTAs (from Content Strategy).
+
+Step 8: THE SCRUB (Brain)
+- Apply 'working/anti_ai_writing_prompt.md'. 
+- Replace em-dashes with periods/commas. Kill all AI buzzwords (delve, leverage, etc.).
+
+Step 9: SELF-CORRECTION AUDIT (Brain)
+- Re-read every generated post. Run this checklist:
+  1. Formatting: Does it match the template's structure exactly?
+  2. Identity: Is there any 'Service-based' or 'Founder-first' hallucination?
+  3. Spine: Is it 'Problem-First'?
+  4. Length: Is it under 200 words?
+- Save finalized posts to '/content/posts/[PKT_TIME]_[Topic_Slug]/'.
+- Update 'content/processed_threads.json' and the session report (MUST explicitly list the used Template IDs for future cool-down checks).
+"""
