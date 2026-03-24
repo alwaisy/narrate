@@ -13,7 +13,7 @@ LOG_FILE="$PROJECT_ROOT/logs/execution.log"
 SESSION_LOG="$PROJECT_ROOT/logs/session_${CURRENT_TIME_PKT}.log"
 PROCESSED_THREADS_LOG="$PROJECT_ROOT/content/processed_threads.json"
 
-# High-Signal Subreddits (Refined for Problem-First Strategy)
+# High-Signal Subreddits (Refined & Expanded)
 SUBREDDITS=(
     "SaaS" 
     "indiehackers" 
@@ -22,15 +22,20 @@ SUBREDDITS=(
     "microsaas" 
     "buildinpublic" 
     "SelfHosted"
-    "smallbusiness"    # High Problem Density
-    "Sales"            # Pain/Decision Gold
-    "roastmystartup"   # Brutal Honesty
-    "Business_Ideas"   # Validation/Problem Gold
-    "SomebodyMakeThis" # Literal Problem Lists
-    "GrowthHacking"    # Distribution Angles
-    "ProductManagement" # Roadmap Logic
-    "sideproject"      # Product Discovery
-    "digitalnomad"     # Lifestyle/Honest Reality
+    "smallbusiness"
+    "Sales"
+    "roastmystartup"
+    "Business_Ideas"
+    "SomebodyMakeThis"
+    "GrowthHacking"
+    "ProductManagement"
+    "sideproject"      # Original
+    "sideprojects"     # New variation
+    "Startup_Ideas"    # New
+    "Marketing"
+    "Business"
+    "AppDevelopment"
+    "digitalnomad"
 )
 
 # Paths

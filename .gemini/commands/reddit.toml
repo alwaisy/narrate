@@ -1,57 +1,12 @@
-description = "Surgical Reddit Mode: Transform a single Reddit URL into 3 LinkedIn posts using the 9-step engine."
+description = "Surgical Reddit Mode: One URL -> Master Execution."
 prompt = """
-[PRE-FLIGHT VALIDATION]: 
-- Verify that `{{url}}` is not empty.
-- Verify that `{{url}}` starts with 'http' and contains 'reddit.com'.
-- If the URL is missing or clearly malformed, STOP immediately and ask the user to provide a valid Reddit thread URL.
+Pre-flight: Verify {{url}} contains 'reddit.com'.
 
-Execute the Surgical Reddit workflow once validated. Follow these 9 steps strictly:
+1. RUN PLUMBING: Execute 'bash lib/fetch_url_reddit.sh {{url}}'.
+2. LOAD PROTOCOL: Read ALL files in 'foundation/', specifically 'MASTER_EXECUTION_RULES.md'.
+3. EXECUTE MASTER STEPS: Follow the 7-step granular workflow defined in 'MASTER_EXECUTION_RULES.md'.
+   - Focus DEEP on the single story from this URL.
+4. MEMORY: Save final outputs and update 'content/processed_threads.json'.
 
-Step 1: SURGICAL FETCH (Bash)
-- Run `bash lib/fetch_url_reddit.sh {{url}}` to fetch the specific thread context.
-- Capture the filename of the generated JSON from the output.
-
-Step 2: CONTEXT ANALYSIS & RELEVANCE GATE (Brain)
-- Analyze the fetched JSON. Identify the 'Problem-First' core, the 'Fork in the Road' decision, and raw emotional sentiment.
-- [NICHE GATE]: Verify relevance against 'foundation/awais-icp (1).md' and 'foundation/content-pillars.md'.
-- If the thread is irrelevant (e.g., memes, unrelated news, non-founder stories), STOP HERE and explain why this URL is a 'Poor Fit' for the Media Scout identity.
-- Unlike Full-Auto, you are focusing deep on this SINGLE story.
-
-Step 3: FIRST FOUNDATION PASS (Brain)
-- Read ALL files in 'foundation/'. Priming the 'Media Analyst Scout' identity. 
-- You are NOT a freelancer. You are NOT the founder. You are an observer.
-
-Step 4: DATA VALIDATION (Bash)
-- Confirm the full body and comments were extracted correctly in Step 1. 
-- Ensure you have the 'Golden Nuggets' (raw quotes, specific numbers) from the thread.
-
-Step 5: SECOND FOUNDATION PASS (Brain)
-- Re-skim 'foundation/awais-content-strategy.docx.md'. Ensure the logic is 'Problem -> Solution -> Product -> Founder'.
-
-Step 6: BRAIN DRAFT (Plain Text)
-- Prepare 3 distinct angles (Problem, Decision, Honest) in plain text paragraphs. 
-- Focus on raw insight and the 'Media Analyst' voice.
-- [MANDATORY]: Save these raw drafts to '/content/drafts/[PKT_TIME]_[Slug]/'.
-
-Step 7: TEMPLATE-LOCKED DRAFTING (Brain)
-- Pick 3 templates from 'working/linkedin-templates.json'.
-- [STRICT]: Copy the literal 'structure' and 'formatting' from the JSON. DO NOT invent your own line breaks or lists.
-- [COPY FIX]: Rewrite the content to fit the Media Scout voice. 
-- [PIVOT]: Change any 'I' (freelancer) language to 'They/The founder' (scouted product).
-- [CTA PIVOT]: Replace any service-sales CTAs with Media Engagement CTAs (from Content Strategy).
-
-Step 8: THE SCRUB (Brain)
-- Apply 'working/anti_ai_writing_prompt.md'. 
-- Replace em-dashes with periods/commas. Kill all AI buzzwords (delve, leverage, etc.).
-
-Step 9: SELF-CORRECTION AUDIT (Brain)
-- Re-read every generated post. Run this checklist:
-  1. Formatting: Does it match the template's structure exactly?
-  2. Identity: Is there any 'Service-based' or 'Founder-first' hallucination?
-  3. Spine: Is it 'Problem-First'?
-  4. Length: Is it under 200 words?
-- Save finalized posts to '/content/posts/[PKT_TIME]_[Slug]/'.
-- Update 'content/processed_threads.json' and the session report.
-
-Begin execution now using: {{url}}
+Begin now using: {{url}}
 """
