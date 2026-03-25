@@ -13,6 +13,12 @@ LOG_FILE="$PROJECT_ROOT/logs/execution.log"
 SESSION_LOG="$PROJECT_ROOT/logs/session_${CURRENT_TIME_PKT}.log"
 PROCESSED_SOURCES_LOG="$PROJECT_ROOT/content/processed_sources.json"
 
+# API Keys (Loaded from .env)
+if [ -f "$PROJECT_ROOT/.env" ]; then
+    source "$PROJECT_ROOT/.env"
+    export JINA_API_KEY
+fi
+
 # High-Signal Subreddits (Refined & Expanded)
 SUBREDDITS=(
     "SaaS" 
@@ -41,13 +47,13 @@ SUBREDDITS=(
 # Paths
 TEMP_DATA_DIR="$PROJECT_ROOT/content/temp"
 FINAL_POSTS_DIR="$PROJECT_ROOT/content/posts"
-WORKING_DIR="$PROJECT_ROOT/working"
-FOUNDATION_DIR="$PROJECT_ROOT/foundation"
+TEMPLATES_DIR="$PROJECT_ROOT/templates"
+CONTEXT_DIR="$PROJECT_ROOT/context"
 
 # Core Rule Files
-TEMPLATES_FILE="$WORKING_DIR/linkedin-templates.json"
-ANTI_AI_RULES="$WORKING_DIR/anti_ai_writing_prompt.md"
-MASTER_RULES="$WORKING_DIR/linkedin_master_writing_rules.md"
+TEMPLATES_FILE="$TEMPLATES_DIR/linkedin-templates.json"
+ANTI_AI_RULES="$TEMPLATES_DIR/anti_ai_writing_prompt.md"
+MASTER_RULES="$TEMPLATES_DIR/linkedin_master_writing_rules.md"
 
 # Function for deep logging
 log_step() {

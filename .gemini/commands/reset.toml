@@ -1,2 +1,2 @@
 description = "Complete Reset: Clears all logs, temp data, drafts, posts, and reports."
-prompt = "Execute a full project reset: Run 'rm -rf logs/* content/temp/* content/drafts/* content/posts/* reports/*' and then 'echo \"[]\" > content/processed_sources.json'. Ensure all directories are recreated and empty."
+prompt = "Execute a full project reset: Run 'bash main.sh reset'. Ensure all directories are recreated and empty."

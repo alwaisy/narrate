@@ -1,8 +1,8 @@
 description = "The Master Content Engine: Scout -> Master Execution."
 prompt = """
-1. RUN PLUMBING: Execute 'bash main.sh' to scout the subreddits.
+1. RUN PLUMBING: Execute 'bash main.sh scout' to scout the subreddits.
 2. PATTERN MATCH: Identify 3 related threads. Filter: Last 7 days, NOT in processed list.
-3. LOAD PROTOCOL: Read ALL files in 'foundation/', specifically 'MASTER_EXECUTION_RULES.md'.
+3. LOAD PROTOCOL: Read ALL files in 'context/', specifically 'MASTER_EXECUTION_RULES.md'.
 4. EXECUTE MASTER STEPS: Follow the 7-step granular workflow defined in 'MASTER_EXECUTION_RULES.md'.
 5. MEMORY: Save final outputs and update 'content/processed_sources.json'.
 """

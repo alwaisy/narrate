@@ -23,11 +23,11 @@ jq '[.[] | {
     hook_type: .metadata.hook_type, 
     tone: .metadata.tone, 
     ideal_for_niche: .metadata.ideal_for_niche
-}]' "$TEMPLATES_FILE" > "$WORKING_DIR/template_index.json"
+}]' "$TEMPLATES_FILE" > "$TEMPLATES_DIR/template_index.json"
 
 if [ $? -eq 0 ]; then
-    COUNT=$(jq 'length' "$WORKING_DIR/template_index.json")
-    log_step "SUCCESS: Indexed $COUNT templates at $WORKING_DIR/template_index.json"
+    COUNT=$(jq 'length' "$TEMPLATES_DIR/template_index.json")
+    log_step "SUCCESS: Indexed $COUNT templates at $TEMPLATES_DIR/template_index.json"
 else
     log_step "ERROR: JQ failed to build the index."
     exit 1

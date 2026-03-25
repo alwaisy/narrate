@@ -13,8 +13,8 @@ A Bash-driven content engine designed for the "Indie Product Media Analyst" iden
 
 ## Project Layout
 
-├─ foundation/ → Strategic mandates (ICP, Content Pillars, Identity, MASTER_EXECUTION_RULES)
-├─ working/ → Operational assets (Templates, Anti-AI rules, Writing guidelines)
+├─ context/ → Strategic mandates (ICP, Content Pillars, Identity, MASTER_EXECUTION_RULES)
+├─ templates/ → Operational assets (Templates, Anti-AI rules, Writing guidelines)
 ├─ lib/ → Reddit API integration and data fetching bash scripts
 ├─ content/ → Multi-stage data pipeline
 │  ├─ temp/ → Raw Reddit JSON snapshots
