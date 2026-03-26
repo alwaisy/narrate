@@ -46,12 +46,14 @@ CLEAN_CONTENT=$(echo "$CONTENT" | sed -E 's/\[[0-9]+\]//g; s/!\[[^]]*\]\([^)]*\)
 WORD_COUNT=$(echo "$CLEAN_CONTENT" | wc -w)
 
 # Save as Structured JSON for the Brain
+echo "$CLEAN_CONTENT" > "$TEMP_DATA_DIR/temp_content.txt"
 jq -n \
     --arg title "$SLUG" \
     --arg url "$URL" \
-    --arg content "$CLEAN_CONTENT" \
     --arg count "$WORD_COUNT" \
-    '{title: $title, url: $url, word_count: $count, body: $content}' > "$OUTPUT_FILE"
+    --rawfile body "$TEMP_DATA_DIR/temp_content.txt" \
+    '{title: $title, url: $url, word_count: $count, body: $body}' > "$OUTPUT_FILE"
+rm "$TEMP_DATA_DIR/temp_content.txt"
 
 log_step "SUCCESS: Article captured via 3-Layer Stack ($WORD_COUNT words) -> $OUTPUT_FILE"
 echo "$OUTPUT_FILE"

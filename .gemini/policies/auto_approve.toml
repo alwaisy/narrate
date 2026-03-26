@@ -1,40 +1,104 @@
-# Auto-Approve Policy for LinkedIn Content Engine
+# Auto-Approve Policy for LinkedIn Content Engine (v4 - Comprehensive)
 
+# --- Core Tools (Always Allow) ---
 [[rule]]
 toolName = "read_file"
 decision = "allow"
-description = "Always allow reading strategy, templates, and data files."
+description = "Allow reading all project files."
 
 [[rule]]
 toolName = "write_file"
 decision = "allow"
-description = "Always allow saving post drafts and reports."
+description = "Allow writing all drafts, posts, reports, and logs."
 
 [[rule]]
 toolName = "list_directory"
 decision = "allow"
-description = "Always allow scanning directories for data."
+description = "Allow scanning all directories."
+
+[[rule]]
+toolName = "replace"
+decision = "allow"
+description = "Allow surgical file edits."
+
+# --- Plumbing & Execution Scripts ---
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "bash"
+decision = "allow"
+description = "Allow all Bash script execution."
+
+# --- Data & Analysis Commands ---
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "jq"
+decision = "allow"
+description = "Allow all JSON parsing."
 
 [[rule]]
 toolName = "run_shell_command"
-commandPrefix = "bash main.sh"
+commandPrefix = "grep"
 decision = "allow"
-description = "Allow the master orchestrator script."
+description = "Allow searching within files."
 
 [[rule]]
 toolName = "run_shell_command"
-commandPrefix = "bash lib/reddit.sh"
+commandPrefix = "cat"
 decision = "allow"
-description = "Allow the subreddit discovery script."
+description = "Allow reading file contents."
 
 [[rule]]
 toolName = "run_shell_command"
-commandPrefix = "bash lib/fetch_thread.sh"
+commandPrefix = "ls"
 decision = "allow"
-description = "Allow the deep-data fetcher."
+description = "Allow listing file and directory information."
 
 [[rule]]
 toolName = "run_shell_command"
-commandPrefix = "mkdir -p"
+commandPrefix = "find"
 decision = "allow"
-description = "Allow creation of post and log directories."
+description = "Allow finding files and directories."
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "wc"
+decision = "allow"
+description = "Allow word and line counting for analysis."
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "history"
+decision = "allow"
+description = "Allow reviewing session command history."
+
+# --- Web Scraping & APIs ---
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "curl"
+decision = "allow"
+description = "Allow all curl operations for fetching."
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "lynx"
+decision = "allow"
+description = "Allow the Lynx text-based browser for scraping."
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "pandoc"
+decision = "allow"
+description = "Allow Pandoc for HTML to Markdown conversion."
+
+# --- Git & System Commands ---
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "git"
+decision = "allow"
+description = "Allow all Git operations."
+
+[[rule]]
+toolName = "run_shell_command"
+commandPrefix = "mkdir"
+decision = "allow"
+description = "Allow creation of directories."
