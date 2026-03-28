@@ -1,6 +1,36 @@
+# Core Folders
 product/
 logs/
 reports/
 content/
+test/
+node_modules/
+**/node_modules/
+
+# Environment and Secrets
 .env
-\ntest/
+*.env
+
+# Gemini / GCLI Temporary Files
+gcli-request-*.json
+gemini-conversation-*.json
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+# npm (Removed package-lock.json from ignore list)
+npm-shrinkwrap.json
+*.log
+*.gz
+
+# Yarn
+yarn-error.log
+yarn.lock
+
+# Coveralls
+.nyc_output
+coverage
+
+# Benchmarking
+benchmarks/graphs

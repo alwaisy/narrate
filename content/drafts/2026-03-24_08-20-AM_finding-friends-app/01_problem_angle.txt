@@ -1,1 +1,0 @@
-The problem is profound: being in your 20s and stuck in a "work-home, home-work" loop, feeling lonely, and not knowing how to make friends. The solution was to build an app (GymBuddy/friend finding app) focusing on specific low-pressure activities like going to the gym together. The founder is a solo builder seeking feedback.
