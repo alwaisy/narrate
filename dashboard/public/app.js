@@ -13,8 +13,7 @@ const statusConfig = {
     DRAFT: { color: 'gray', icon: 'ph-pencil-line' },
     READY: { color: 'blue', icon: 'ph-check-circle' },
     PUBLISHED: { color: 'green', icon: 'ph-paper-plane-tilt' },
-    SKIPPED: { color: 'red', icon: 'ph-prohibit' },
-    ARCHIVED: { color: 'amber', icon: 'ph-archive-box' }
+    SKIPPED: { color: 'red', icon: 'ph-prohibit' }
 };
 
 // Elements

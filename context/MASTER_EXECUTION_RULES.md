@@ -54,7 +54,7 @@ Step 2: NUGGET EXTRACTION
 
 Step 3 — RAW DRAFTS (Plain Text Only)
 - Write 3 drafts in plain paragraphs. NO formatting. NO templates.
-- [MANDATORY]: Save these to '/content/drafts/[PKT_TIME]_[Slug]/' as 3 separate files:
+- [MANDATORY]: Generate the folder name by executing `date +"%Y-%m-%d_%I-%M-%p-%Z"`. Use this exact output (e.g., `2026-03-30_10-45-AM-PKT`) combined with the slug. Save these to '/content/drafts/[TIMESTAMP]_[Slug]/' as 3 separate files:
   1. 01_problem_angle.txt
   2. 02_decision_angle.txt
   3. 03_honest_angle.txt
@@ -90,7 +90,7 @@ Step 6: SELF-CORRECTION AUDIT
 - [ ] First line < 54 characters?
 
 Step 7 — SAVE AND LOG
-- Save finalized posts to '/content/posts/[PKT_TIME]_[Slug]/'.
+- Save finalized posts to '/content/posts/[TIMESTAMP]_[Slug]/', using the same timestamp generated in Step 3.
 - [STRICT]: You MUST create 3 separate files:
   1. 01_problem_angle.md
   2. 02_decision_angle.md
