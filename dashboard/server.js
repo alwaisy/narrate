@@ -17,6 +17,7 @@ const PORT = 3000;
 // Paths to your posts
 const POSTS_DIR = path.join(__dirname, '../content/posts');
 const ARCHIVE_DIR = path.join(__dirname, '../content/archive');
+const REPORTS_DIR = path.join(__dirname, '../reports');
 
 // Ensure directories exist
 if (!fs.existsSync(POSTS_DIR)) fs.mkdirSync(POSTS_DIR, { recursive: true });
@@ -203,7 +204,71 @@ app.patch('/api/topics/:id/archived', (req, res) => {
     }
 });
 
-// 6. Copy to clipboard
+// 6. Get report for a topic
+app.get('/api/reports/:topicId', (req, res) => {
+    const topicId = req.params.topicId;
+
+    if (!fs.existsSync(REPORTS_DIR)) {
+        return res.json({ found: false, content: null });
+    }
+
+    const reports = fs.readdirSync(REPORTS_DIR).filter(f => f.endsWith('.md'));
+
+    // Strategy 1: Extract timestamp prefix from topic and match report filename
+    // Topic: "2026-03-24_08-44-PM_reddit-acquisition-trap"
+    // Report: "2026-03-24_08-44-PM_session_report.md"
+    const tsMatch = topicId.match(/^([\d]{4}-[\d]{2}-[\d]{2}_[\d]{2}-[\d]{2}-(?:AM|PM))/i);
+    if (tsMatch) {
+        const prefix = tsMatch[1];
+        const match = reports.find(r => r.startsWith(prefix));
+        if (match) {
+            const content = fs.readFileSync(path.join(REPORTS_DIR, match), 'utf-8');
+            return res.json({ found: true, filename: match, content });
+        }
+    }
+
+    // Strategy 2: compact timestamp "20260326_0135" or "260328_0923"
+    const compactMatch = topicId.match(/^([\d]{6,8}_[\d]{4})/);
+    if (compactMatch) {
+        const prefix = compactMatch[1];
+        const match = reports.find(r => r.startsWith(prefix));
+        if (match) {
+            const content = fs.readFileSync(path.join(REPORTS_DIR, match), 'utf-8');
+            return res.json({ found: true, filename: match, content });
+        }
+    }
+
+    // Strategy 3: extract slug from topic and find report containing it
+    const slugFromTopic = topicId
+        .replace(/^[\d]{4}-[\d]{2}-[\d]{2}[-_][\d]{2}-[\d]{2}-(?:AM|PM)[-_]?/i, '')
+        .replace(/^[\d]{6,8}_[\d]{4}[_-]?/, '')
+        .replace(/^[\d]{4}-[\d]{2}-[\d]{2}-[\d]{4}[_-]?/, '')
+        .toLowerCase();
+
+    if (slugFromTopic) {
+        const match = reports.find(r => r.toLowerCase().includes(slugFromTopic));
+        if (match) {
+            const content = fs.readFileSync(path.join(REPORTS_DIR, match), 'utf-8');
+            return res.json({ found: true, filename: match, content });
+        }
+    }
+
+    // Strategy 4: fuzzy date-only match + most recent
+    const dateMatch = topicId.match(/^([\d]{4}-[\d]{2}-[\d]{2})/);
+    if (dateMatch) {
+        const datePrefix = dateMatch[1];
+        const dateMatches = reports.filter(r => r.startsWith(datePrefix));
+        if (dateMatches.length > 0) {
+            const match = dateMatches.sort().pop();
+            const content = fs.readFileSync(path.join(REPORTS_DIR, match), 'utf-8');
+            return res.json({ found: true, filename: match, content });
+        }
+    }
+
+    res.json({ found: false, content: null });
+});
+
+// 7. Copy to clipboard
 app.post('/api/copy', (req, res) => {
     const { content } = req.body;
     const proc = exec('xclip -selection clipboard', (err) => {

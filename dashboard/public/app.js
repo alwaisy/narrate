@@ -32,7 +32,10 @@ const dom = {
     statusBadge: document.getElementById('post-status-badge'),
     statusToggles: document.getElementById('status-toggles'),
     saveStatus: document.getElementById('save-status'),
-    copyButton: document.getElementById('copy-to-linkedin-btn')
+    copyButton: document.getElementById('copy-to-linkedin-btn'),
+    reportPanel: document.getElementById('report-panel'),
+    reportEmpty: document.getElementById('report-empty'),
+    reportContent: document.getElementById('report-content')
 };
 
 // --- Routing Engine ---
@@ -81,6 +84,10 @@ const router = {
             renderTopics();
             renderAngles();
 
+            // Load report for this topic
+            const report = await fetchReport(topic.id);
+            renderReport(report);
+
             // Handle angle selection
             const targetAngle = angleFile || (topic.angles[0]?.raw);
             if (targetAngle) {
@@ -97,6 +104,8 @@ const router = {
         dom.currentTopicTitle.textContent = 'Post Scout Dashboard';
         dom.currentTopicDate.textContent = 'Select a topic';
         dom.editorView.classList.add('hidden');
+        dom.reportPanel.classList.add('hidden');
+        dom.reportEmpty.classList.add('hidden');
         dom.emptyView.classList.remove('hidden');
         renderTopics();
     },
@@ -152,6 +161,31 @@ async function savePost(topicId, filename, content) {
     });
     dom.saveStatus.textContent = 'Changes saved';
     setTimeout(() => { if (!state.isEditing) dom.saveStatus.textContent = 'Ready'; }, 2000);
+}
+
+async function fetchReport(topicId) {
+    try {
+        const res = await fetch(`/api/reports/${encodeURIComponent(topicId)}`);
+        return await res.json();
+    } catch (err) {
+        console.error('Fetch report failed', err);
+        return { found: false, content: null };
+    }
+}
+
+function renderReport(report) {
+    if (!report.found || !report.content) {
+        dom.reportPanel.classList.add('hidden');
+        dom.reportEmpty.classList.remove('hidden');
+        return;
+    }
+
+    dom.reportEmpty.classList.add('hidden');
+    dom.reportPanel.classList.remove('hidden');
+
+    // Use marked for proper markdown rendering
+    const html = marked.parse(report.content);
+    dom.reportContent.innerHTML = html;
 }
 
 // --- Logic ---
