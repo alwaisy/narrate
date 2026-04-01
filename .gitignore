@@ -3,6 +3,7 @@ product/
 logs/
 reports/
 content/
+context/
 test/
 node_modules/
 **/node_modules/
