@@ -163,7 +163,10 @@
             <div class="flex-1 overflow-y-auto p-8 flex justify-center">
                 <div id="editor-container" class="w-full max-w-2xl bg-white rounded-xl border border-gray-200 shadow-sm p-8 h-fit transition-all">
                     <div class="flex items-center justify-between mb-6">
-                        <div id="post-status-badge"></div>
+                        <div class="flex gap-2 items-center">
+                            <div id="post-status-badge"></div>
+                            <span id="edit-indicator" class="px-2 py-1 bg-gray-100 text-gray-500 rounded text-[10px] font-bold uppercase tracking-wider">View Mode</span>
+                        </div>
                         <div class="flex gap-1 bg-gray-100 p-1 rounded-lg" id="status-toggles"></div>
                     </div>
                     <textarea id="post-editor" 

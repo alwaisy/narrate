@@ -32,6 +32,8 @@ const dom = {
     statusBadge: document.getElementById('post-status-badge'),
     statusToggles: document.getElementById('status-toggles'),
     saveStatus: document.getElementById('save-status'),
+    editIndicator: document.getElementById('edit-indicator'),
+    saveHint: document.getElementById('save-hint'),
     copyButton: document.getElementById('copy-to-linkedin-btn'),
     reportPanel: document.getElementById('report-panel'),
     reportEmpty: document.getElementById('report-empty'),
@@ -56,7 +58,6 @@ const router = {
         if (topicId) {
             await this.loadTopic(topicId, angleFile);
             dom.copyButton.classList.remove('hidden'); // Show copy button when a post is open
-            dom.copyButton.onclick = copyCurrentPost; // Attach event handler
         } else {
             this.showEmpty();
             dom.copyButton.classList.add('hidden'); // Hide copy button when no post is open
@@ -226,7 +227,11 @@ async function selectAngle(rawFilename) {
     state.currentPost = angle;
     const content = await fetchPostContent(state.currentTopic.id, angle.raw);
     dom.editor.value = content;
-    dom.saveStatus.textContent = 'Ready';
+    
+    // Don't overwrite success messages immediately
+    if (!dom.saveStatus.textContent.includes('Copied')) {
+        dom.saveStatus.textContent = 'Ready';
+    }
     
     renderAngles();
     renderStatus();
@@ -355,16 +360,32 @@ function renderStatus() {
 }
 
 async function copyCurrentPost() {
-    if (!state.currentPost) return;
-    const res = await fetch('/api/copy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: dom.editor.value })
-    });
-    if (res.ok) {
+    try {
+        if (state.isEditing) await exitEditMode();
+        if (!state.currentPost) return;
+        
+        const content = dom.editor.value;
+        
+        // Use Browser Clipboard API
+        await navigator.clipboard.writeText(content);
+        
         dom.saveStatus.textContent = 'Copied to clipboard!';
-        if (state.currentPost.status === 'READY') await updateStatus('PUBLISHED', true); // Bypass confirmation
-        setTimeout(() => dom.saveStatus.textContent = 'Ready', 3000);
+        
+        // Auto-publish if it's READY or DRAFT
+        if (state.currentPost.status === 'READY' || state.currentPost.status === 'DRAFT') {
+            dom.saveStatus.textContent = 'Copying & Publishing...';
+            await updateStatus('PUBLISHED', true);
+            dom.saveStatus.textContent = 'Copied & Published!';
+        }
+        
+        setTimeout(() => {
+            if (dom.saveStatus.textContent.includes('Copied')) {
+                dom.saveStatus.textContent = 'Ready';
+            }
+        }, 3000);
+    } catch (err) {
+        console.error('Copy failed', err);
+        dom.saveStatus.textContent = 'Copy failed: ' + err.message;
     }
 }
 
@@ -374,6 +395,8 @@ async function init() {
     keyboard.init();
     router.init();
     
+    dom.copyButton.onclick = copyCurrentPost;
+
     dom.topicFilter.addEventListener('input', (e) => {
         state.filterQuery = e.target.value.toLowerCase();
         renderTopics();

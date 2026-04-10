@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const { exec } = require('child_process');
 const pino = require('pino');
 const logger = pino({
@@ -12,7 +13,7 @@ const logger = pino({
 });
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 6842;
 
 // Paths to your posts
 const POSTS_DIR = path.join(__dirname, '../content/posts');

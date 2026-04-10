@@ -11,7 +11,10 @@ if [ ! -d "$DASHBOARD_DIR/node_modules" ]; then
     cd "$DASHBOARD_DIR" && npm install
 fi
 
-echo "🚀 Starting Post Scout Dashboard..."
-echo "🔗 Open http://localhost:3000 in your browser"
+# Allow port to be passed as argument, default to 6001
+PORT=${1:-6842}
 
-cd "$DASHBOARD_DIR" && node server.js
+echo "🚀 Starting Post Scout Dashboard..."
+echo "🔗 Open http://localhost:$PORT in your browser"
+
+cd "$DASHBOARD_DIR" && PORT=$PORT node server.js

@@ -37,7 +37,7 @@ A Bash-driven content engine that automates Reddit thread discovery and Gemini-p
 ├─ main.sh → Central command router (scout, fetch_reddit, fetch_article, build_index, get_template, reset)
 ├─ config.sh → All paths, subreddits (20 targets), timezone, logging functions
 ├─ manage.sh → fzf-based TUI for browsing, editing, and status-tagging posts
-└─ start_dashboard.sh → Boots the Express dashboard on localhost:3000
+└─ start_dashboard.sh → Boots the Express dashboard on localhost:6842
 
 ## Architecture Overview
 
@@ -45,7 +45,7 @@ The system is a modular data pipeline. Bash scripts in `lib/` handle all data ac
 
 The pipeline flow: `reddit.sh` fetches the newest thread from each of 20 subreddits with a 2-second rate-limit sleep between calls. Raw JSON lands in `content/temp/`. Gemini selects 3 high-signal threads, runs `fetch_thread.sh` for deep comment extraction, then generates 3 plain-text drafts (problem angle, decision angle, honest angle) per thread, 9 posts total per session. Each draft is matched to a structural template from `templates/linkedin-templates.json` using metadata (funnel stage, tone, hook type). A cool-down mechanism reads the last 10 session reports to avoid template repetition. Final posts are saved as `.md` files in `content/posts/`.
 
-The dashboard (`dashboard/server.js`) provides a web UI on port 3000 with REST endpoints for browsing topics, editing post content, toggling status (DRAFT/READY/PUBLISHED/SKIPPED), and archiving topics. The TUI manager (`manage.sh`) offers the same workflow via fzf with batcat previews and xclip clipboard support.
+The dashboard (`dashboard/server.js`) provides a web UI on port 6842 with REST endpoints for browsing topics, editing post content, toggling status (DRAFT/READY/PUBLISHED/SKIPPED), and archiving topics. The TUI manager (`manage.sh`) offers the same workflow via fzf with batcat previews and xclip clipboard support.
 
 ### Gemini TOML Commands
 
@@ -130,12 +130,12 @@ Status is encoded in filenames as `[STATUS]-name.md`. The frontend lives in `das
 • Timezone: All logs and filenames use Pakistan Standard Time (Asia/Karachi) via `config.sh`
 • Session memory: `processed_sources.json` enables cool-down (avoids repeating templates across sessions). Keep local, never commit
 • Template index: `build_index.sh` runs automatically before scout/fetch. If it fails, the Brain has no template metadata
-• Dashboard port: Hardcoded to 3000 in `server.js`. Change in both server and `start_dashboard.sh` if needed
+• Dashboard port: Configurable via command-line argument. Usage: `bash start_dashboard.sh 6005` (defaults to 6842)
 • Lynx/Pandoc: Required by `fetch_product.sh` Layer 2/3 fallbacks. Install separately if product scraping fails
 
 ## Deployment
 
 • Environment: Local Linux machine or WSL
 • Requirements: Gemini CLI installed and authenticated, jq, curl, lynx, pandoc
-• Dashboard: `bash start_dashboard.sh` boots Express on localhost:3000
+• Dashboard: `bash start_dashboard.sh` boots Express on localhost:6842
 • Pipeline: Fully local. No cloud hosting or CI/CD configured
