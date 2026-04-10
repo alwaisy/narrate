@@ -1,102 +1,134 @@
 # LinkedIn Post Generator (Brain-Powered CLI)
 
-A Bash-driven content engine for the Media Analyst Scout identity. This system automates Reddit discovery and Gemini-powered drafting to create problem-first LinkedIn stories for solo founders and indie builders. It uses a strict human-like tone, banning common AI buzzwords and robotic structures.
+A Bash-driven content engine that automates Reddit thread discovery and Gemini-powered drafting to produce problem-first LinkedIn posts for solo founders and indie builders. The system follows a strict Editorial Spine (Problem, Solution, Product, Founder) and enforces human-like tone by banning AI buzzwords and robotic structures.
 
 ## Build & Test
 
-### Core Engine
-• Install dependencies: `sudo apt install jq curl`
+• Install system deps: `sudo apt install jq curl lynx pandoc`
+• Install dashboard deps: `cd dashboard && bun install`
 • Run master workflow: `bash main.sh scout`
 • Fetch specific Reddit thread: `bash main.sh fetch_reddit <url>`
-• Fetch specific web article: `bash main.sh fetch_article <url>`
-• Get a post template by ID: `bash main.sh get_template <id>`
-• Reset all generated content and logs: `bash main.sh reset`
-
-### Dashboard
-• Install dependencies: `cd dashboard && npm install`
-• Start server: `node dashboard/server.js` or `bash start_dashboard.sh`
+• Fetch web article: `bash main.sh fetch_article <url>`
+• Fetch product page: `bash lib/fetch_product.sh <url>`
+• Rebuild template index: `bash main.sh build_index`
+• Get template by ID: `bash main.sh get_template <id>`
+• Reset all data: `bash main.sh reset`
+• Start dashboard: `bash start_dashboard.sh` (runs on localhost:6842)
+• Launch TUI manager: `bash manage.sh`
+• Execute Brain pipeline: `gemini go`
+• Run post-quality audit: `gemini review <post-path>`
+• Initialize AI context: `gemini init`
 
 ## Project Layout
 
-├─ main.sh → The central controller script that routes all commands.
-├─ config.sh → Global configuration for paths, subreddits, and TZ.
-├─ context/ → Strategic mandates (ICP, Content Pillars, Identity, Master Rules).
-├─ templates/ → Operational assets (Post structures, Anti-AI rules).
-├─ lib/ → Standalone Bash scripts for data fetching (Reddit, web).
-├─ content/ → Multi-stage data pipeline for posts.
-│  ├─ drafts/ → Raw, unformatted AI "angles" (Problem, Decision, Honest).
-│  └─ posts/ → Finalized, template-locked LinkedIn content.
-├─ dashboard/ → A simple Express.js server for viewing content.
-├─ reports/ → Architectural reasoning and logs for every generated post.
-└─ logs/ → Traceability for Bash execution and AI sessions.
+```
+├─ .gemini/commands/ → TOML command definitions for Gemini CLI (go, review, reddit, article, product, text, reset, init)
+├─ .commands/ → Kilo CLI command definitions
+├─ context/ → Strategic mandates (ICP, content pillars, identity rules, master execution rules)
+├─ templates/ → LinkedIn post templates JSON, anti-AI rules, template metadata index
+├─ lib/ → Bash scripts for data acquisition (reddit, fetch_thread, fetch_article, fetch_product, build_index, get_template)
+├─ content/ → Multi-stage data pipeline
+│  ├─ temp/ → Raw JSON from Reddit/article fetches
+│  ├─ drafts/ → Unformatted AI angles (Problem, Decision, Honest)
+│  └─ posts/ → Finalized, template-locked LinkedIn content
+├─ dashboard/ → Hono (Node.js) web UI for managing posts
+│  ├─ server.js → REST API (topics, posts, status, archive, clipboard)
+│  └─ public/ → Frontend assets
+├─ reports/ → Session reports with reasoning for every generated post
+├─ logs/ → Execution and session logs
+├─ main.sh → Central command router (scout, fetch_reddit, fetch_article, build_index, get_template, reset)
+├─ config.sh → All paths, subreddits (20 targets), timezone, logging functions
+├─ manage.sh → fzf-based TUI for browsing, editing, and status-tagging posts
+└─ start_dashboard.sh → Boots the Hono dashboard on localhost:6842
+```
 
 ## Architecture Overview
 
-The system is a modular data pipeline where Bash scripts handle data acquisition and the Gemini CLI serves as the analytical layer (The Brain). The architecture follows a strict "Problem → Solution → Product → Founder" Editorial Spine to ensure content is valuable to the reader.
+The system is a modular data pipeline where Bash scripts handle all data acquisition from public Reddit endpoints and web articles. The Gemini CLI serves as the analytical layer (the "Brain") that follows a 7-step Master Execution Protocol defined in `context/MASTER_EXECUTION_RULES.md`.
 
-The primary workflow (`main.sh scout`) uses `lib/reddit.sh` to find promising threads on specified subreddits. This raw data is passed to the AI, which follows the `context/MASTER_EXECUTION_RULES.md` to select sources, fetch full content, generate three distinct post angles (Problem, Decision, Honest), select a formatting template, apply an anti-AI filter, and save the final Markdown files to the `content/posts/` directory.
+The pipeline flow: `reddit.sh` fetches the newest thread from each of 20 subreddits with a 2-second rate-limit sleep between calls. Raw JSON lands in `content/temp/`. Gemini selects 3 high-signal threads, runs `fetch_thread.sh` for deep comment extraction, then generates 3 plain-text drafts (problem angle, decision angle, honest angle) per thread, 9 posts total per session. Each draft is matched to a structural template from `templates/linkedin-templates.json` using metadata (funnel stage, tone, hook type). A cool-down mechanism reads the last 10 session reports to avoid template repetition. Final posts are saved as `.md` files in `content/posts/` with status-prefixed filenames.
+
+The dashboard (`dashboard/server.js`) provides a web UI on port 6842 with 6 REST endpoints for browsing topics, editing post content, toggling status (DRAFT/READY/PUBLISHED/SKIPPED), and archiving topics. The TUI manager (`manage.sh`) offers the same workflow via fzf with batcat previews and xclip clipboard support.
 
 ## Development Patterns & Constraints
 
 ### Coding Style
-• Language: Bash for all core logic, JavaScript (Node.js/Express) for the dashboard.
-• Naming: Use `UPPER_CASE` for global environment variables in Bash. Follow standard JS conventions in the dashboard.
-• Logic Isolation: Data fetching logic in `lib/` is independent of AI prompting logic.
-• Configuration: All core engine paths and target subreddits are centralized in `config.sh`.
-• Data Structures: The JSON structure of `processed_sources.json` and `templates/linkedin-templates.json` is rigid and must be preserved.
+• Bash: `set -euo pipefail` in main.sh, UPPER_CASE for globals, lowercase for locals, 4-space indentation
+• JavaScript (ESM): Hono framework with pino structured logging, camelCase variables, PascalCase for classes, 2-space indentation
+• All Bash scripts source `config.sh` for shared variables and logging functions
+• JSON data files validated with `jq`; `processed_sources.json` structure must be preserved exactly
+• Configuration: All paths, subreddits, and TZ stay in `config.sh`; API keys in `.env`
+• Dashboard: ESM with CommonJS-style requires where possible; no TypeScript
 
-### Copywriting Constraints
-• Tone: Natural, warm, direct. Use specific numbers (e.g., $49) instead of words.
-• Rhythm: Follow a 1-3-1-3 sentence pacing. Never exceed 3 sentences in a paragraph block. Use one empty line between ideas.
-• Punctuation: No em-dashes ("—"). Use periods or commas instead.
-• Identity: Write from a third-person observer perspective ("They / The founder"), not first-person ("I").
-• Banned Vocabulary: Zero tolerance for AI buzzwords (e.g., delve, harness, unlock, leverage, seamless). See `templates/anti_ai_writing_prompt.md`.
-• Banned Patterns: Avoid clichés like "In a world where..." or "Stop doing X. Start doing Y."
+### Naming Conventions
+• Bash variables: UPPER_CASE for globals, lowercase for locals
+• JavaScript: camelCase for variables/functions, PascalCase for classes
+• File names: kebab-case for scripts and assets, snake_case for data files
+• Directories: lowercase, hyphenated for clarity
+• Post filenames: `[STATUS]-name.md` (e.g., `[DRAFT]-problem-angle.md`)
 
 ### Error Handling
-• Thin Source Flag: If Reddit data is sparse, the AI must flag the draft with `[THIN SOURCE]`.
-• File Check: The system must confirm draft files exist before moving to template selection.
+• Bash: `set -euo pipefail` to fail fast on errors
+• JavaScript: try-catch blocks for async operations; errors logged with pino
+• Validation: Check required fields in JSON structures before processing
+• Thin source flag: If Reddit data is sparse, flag as `[THIN SOURCE]` in drafts
+• Operational gate: System confirms draft files exist before template selection (Step 3 hard stop)
+• Template safety: If `get_template.sh` fails, pick next closest ID and retry
+• Fetch escalation: `fetch_article.sh` uses 3 layers (clean curl, user-agent spoof, Jina.ai). `fetch_product.sh` uses Jina Pro, Lynx, Pandoc. Both fail if word count drops below 100-150
+
+### Copywriting Constraints
+• Tone: Natural, warm, direct. Use specific numbers ($49) not words
+• Rhythm: 1-3-1-3 pacing. Never exceed 3 sentences per block. One empty line between ideas
+• Punctuation: No em-dashes. Use periods or commas
+• Editorial Spine: Problem, Solution, Product, Founder order is non-negotiable
+• Identity: Write "They / The founder", never "I" (except for your own product, Fewwords)
+• Banned vocabulary: delve, harness, unlock, paradigm, leverage, seamless, robust, transformative, innovative, game-changer, elevate, streamline, empower, cutting-edge, scalable, visionary, disruptive, reimagine, holistic, synergy, foster, showcase, enhance
+• Banned patterns: "In a world where...", "Stop doing X. Start doing Y.", "Here's the truth nobody tells you"
 
 ## Security
 
-• Authentication: Core engine uses public Reddit endpoints only; no API keys required for basic scouting.
-• API Keys: `JINA_API_KEY` is loaded from a `.env` file for the `fetch_article` command.
-• Data Privacy: All generated content, logs, and reports are stored locally and are excluded from version control via `.gitignore`.
-• AI Identity: The engine acts as an Observer. It never claims to be the founder of a scouted product.
+• Public Reddit JSON endpoints only. No authenticated API calls for thread discovery
+• JINA_API_KEY loaded from `.env` for article/product scraping via Jina.ai
+• Engine acts as Observer/Media Analyst. Never claims to be the founder of scouted products
+• Drafts, configs, logs, and `.env` excluded from git via `.gitignore`
+• `processed_sources.json` stays local, never committed
 
 ## Git Workflows
 
-• Branching strategy: Use `feature/*` or `bugfix/*` branches, merging into `main`.
-• Commit conventions: Use clear, short messages for script updates or prompt changes.
-• PR requirements: Verify pipeline stability before merging. Do not modify fetching logic without manual tests.
+• Branching: Feature or bugfix branches merging into main
+• Commits: Clear, short messages for script updates or prompt changes
+• PR requirements: Verify `bash main.sh scout` completes without errors before merging
+• Protected files: Do not modify fetching logic without manual tests against live Reddit endpoints
 
 ## Evidence Required for Every PR
 
-A pull request is reviewable when it includes:
-
-• Script Testing: `bash main.sh scout` completes the scouting phase without errors.
-• Template Validation: New templates match the schema in `templates/linkedin-templates.json`.
-• Proof Artifact: A sample post showing the 1-3-1-3 rhythm and correct Editorial Spine.
-• Clean Scrub: Finalized output contains no banned AI words or patterns.
-• No drop in test coverage (if applicable).
-• Documentation updated if core logic changed.
+• Pipeline test: `bash main.sh scout` completes the scouting phase without errors
+• Template validation: New templates match the schema in `linkedin-templates.json` (id, name, structure, metadata with funnel_stage, content_category, hook_type, tone)
+• Proof artifact: A sample post showing 1-3-1-3 rhythm and correct Editorial Spine
+• Clean scrub: Finalized output contains no banned AI words or patterns
+• Dashboard check: `node dashboard/server.js` starts without errors if server code changed
 
 ## External Services
 
-• Reddit API (JSON) - `N/A` - Public access for thread discovery.
-• Gemini CLI - `N/A` - Local context for text transformation and strategic analysis.
-• Jina AI - `JINA_API_KEY` - Used in `lib/fetch_article.sh` for web scraping.
+• Reddit JSON API - `N/A` - Public access for thread discovery and comment extraction
+• Gemini CLI - `N/A` - Local AI context for text transformation and strategic analysis
+• Jina.ai Reader (`r.jina.ai/`) - `JINA_API_KEY` - Web scraping fallback for articles and product pages
+• xclip - `N/A` - Clipboard operations in TUI manager and dashboard
 
-## Gotchas & Common Pitfalls
+## Gotchas
 
-• **jq Dependency:** The entire pipeline relies on `jq` for parsing Reddit's nested JSON. The system will fail without it.
-• **Rate Limiting:** A 2-second `sleep` is used in `lib/reddit.sh` to prevent being rate-limited by Reddit.
-• **AI Voice Drift:** The AI naturally drifts toward first-person ("I"). Prompts must explicitly force a pivot to the third-person "They" observer frame.
-• **Timezone:** All logs and filenames are standardized to Pakistan Standard Time (Asia/Karachi), which is set in `config.sh`.
-• **Session Memory:** `content/processed_sources.json` is used for cool-down checks to avoid re-processing the same content. It should not be committed.
+• jq dependency: Essential for parsing Reddit nested JSON and building template index. Pipeline fails without it
+• Rate limiting: The 2-second sleep in `reddit.sh` prevents Reddit IP blocks. Do not reduce
+• Voice drift: AI naturally drifts toward first-person. Explicitly force "They" in drafts
+• Timezone: All logs and filenames use Pakistan Standard Time (Asia/Karachi) via `config.sh`
+• Session memory: `processed_sources.json` enables cool-down (avoids repeating templates across sessions). Keep local, never commit
+• Template index: `build_index.sh` runs automatically before scout/fetch. If it fails, the Brain has no template metadata
+• Dashboard port: Configurable via command-line argument. Usage: `bash start_dashboard.sh 6005` (defaults to 6842)
+• Lynx/Pandoc: Required by `fetch_product.sh` Layer 2/3 fallbacks. Install separately if product scraping fails
 
 ## Deployment
 
-• Environment: Local Linux machine or a compatible environment like WSL.
-• Requirements: Gemini CLI must be installed and authenticated. Bash, `jq`, and `curl` must be available. Node.js and npm are needed for the dashboard.
-• Pipeline: The system is designed for local execution. No cloud hosting or CI/CD deployments are configured.
+• Environment: Local Linux machine or WSL
+• Requirements: Gemini CLI installed and authenticated, jq, curl, lynx, pandoc
+• Dashboard: `bash start_dashboard.sh` boots Hono on localhost:6842
+• Pipeline: Fully local. No cloud hosting or CI/CD configured

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Post Card Generator — Awais Alwaisy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<!-- Pre-loaded curated list of high-quality fonts for the headline -->
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=IBM+Plex+Mono:wght@700&family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@700;800&family=Space+Grotesk:wght@700&family=Syne:wght@700;800&family=Zilla+Slab:wght@700&display=swap" rel="stylesheet"/>
+<!-- User-selected fonts (Batch 1) -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Bungee&family=Changa+One&family=Datatype&family=Exo:wght@400;700&family=Gravitas+One&family=Libre+Baskerville:wght@400;700&family=Montserrat+Alternates:wght@400;700&family=Orbitron:wght@400;700;900&family=Oswald:wght@400;700&family=Playfair+Display:wght@400;700&family=Poller+One&family=Sekuya&family=Sirin+Stencil&family=Viga&display=swap" rel="stylesheet"/>
+<!-- User-selected fonts (Batch 2) -->
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=BioRhyme&family=DM+Serif+Text&family=Fraunces&family=Geist+Mono&family=Geom&family=IBM+Plex+Sans&family=Libre+Franklin&family=Neuton&family=Newsreader&family=Noto+Sans+Mono&family=Sora&family=Special+Gothic&family=Unbounded&family=Urbanist&family=Zalando+Sans&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#272822;--bg2:#1e1f1c;--bg3:#1a1a18;--border:#3e3d32;
+  --green:#a6e22e;--red:#f92672;--yellow:#e6db74;--cyan:#66d9e8;
+  --purple:#ae81ff;--orange:#fd971f;--comment:#75715e;--text:#f8f8f2;--muted:#49483e;
+}
+body{font-family:'JetBrains Mono',monospace;background:var(--bg3);color:var(--text);display:flex;height:100vh;overflow:hidden;}
+
+/* ── Sidebar ── */
+aside{width:290px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;height:100vh;flex-shrink:0;}
+.sb-head{padding:18px 20px 14px;border-bottom:1px solid var(--border);}
+.sb-brand{font-size:13px;font-weight:600;color:var(--green);letter-spacing:.04em;margin-bottom:3px;}
+.sb-sub{font-size:10px;color:var(--comment);letter-spacing:.06em;}
+.sb-body{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:16px;}
+.sb-body::-webkit-scrollbar{width:3px;}
+.sb-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.fl{font-size:10px;color:var(--comment);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;display:block;}
+.fh{font-size:10px;color:var(--muted);margin-bottom:5px;font-style:italic;line-height:1.5;}
+.fh b{color:var(--green);font-style:normal;font-weight:400;}
+
+input[type="text"],textarea,select.dropdown{
+  width:100%;background:var(--bg);border:1px solid var(--border);border-radius:3px;
+  color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;
+  padding:8px 11px;outline:none;transition:border-color .15s;resize:none;line-height:1.6;
+}
+select.dropdown { appearance: none; cursor: pointer; padding-right: 24px; }
+select.dropdown:focus { border-color:var(--green); }
+.select-wrapper { position: relative; }
+.select-wrapper::after { content: '▼'; font-size: 8px; color: var(--comment); position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+
+input[type="text"]:focus,textarea:focus{border-color:var(--green);}
+::placeholder{color:var(--muted);}
+.row{display:flex;gap:6px;}
+.pbtn{flex:1;padding:7px 4px;border-radius:3px;border:1px solid var(--border);background:transparent;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--comment);cursor:pointer;letter-spacing:.04em;transition:all .15s;text-align:center;}
+.pbtn:hover{border-color:var(--comment);color:var(--text);}
+.pbtn.ap{border-color:var(--red);   color:var(--red);   background:rgba(249,38,114,.08);}
+.pbtn.ad{border-color:var(--cyan);  color:var(--cyan);  background:rgba(102,217,232,.08);}
+.pbtn.ah{border-color:var(--purple);color:var(--purple);background:rgba(174,129,255,.08);}
+.pbtn.af{border-color:var(--green); color:var(--green); background:rgba(166,226,46,.08);}
+.desc-list{display:flex;flex-direction:column;gap:6px;}
+.desc-item{display:flex;gap:6px;align-items:flex-start;}
+.desc-item textarea{flex:1;min-height:48px;}
+.desc-rm{background:transparent;border:1px solid var(--border);border-radius:3px;color:var(--comment);font-size:16px;cursor:pointer;padding:0 8px;line-height:1;align-self:stretch;transition:all .15s;font-family:'JetBrains Mono',monospace;}
+.desc-rm:hover{border-color:var(--red);color:var(--red);}
+.add-item{width:100%;padding:7px;border-radius:3px;border:1px dashed var(--border);background:transparent;color:var(--comment);font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;letter-spacing:.06em;transition:all .15s;}
+.add-item:hover{border-color:var(--green);color:var(--green);}
+.sb-foot{padding:14px 18px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:7px;}
+.dlbtn{width:100%;padding:10px;border-radius:3px;border:1px solid rgba(166,226,46,.35);background:rgba(166,226,46,.08);color:var(--green);font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;cursor:pointer;letter-spacing:.04em;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.dlbtn:hover{background:rgba(166,226,46,.15);}
+.dlbtn:disabled{opacity:.4;cursor:not-allowed;}
+.stag{font-size:10px;color:var(--muted);background:rgba(255,255,255,.05);border:1px solid var(--border);padding:1px 6px;border-radius:2px;}
+
+/* ── Main ── */
+main{flex:1;display:flex;align-items:center;justify-content:center;background:var(--bg3);overflow:hidden;position:relative;}
+main::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.012) 40px,rgba(255,255,255,.012) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.012) 40px,rgba(255,255,255,.012) 41px);pointer-events:none;}
+#sw{position:relative;}
+
+/* ── Card ── */
+#card{width:1080px;height:1080px;background:var(--bg);position:relative;overflow:hidden;flex-shrink:0;transform-origin:top left;}
+#card::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.03) 3px,rgba(0,0,0,.03) 4px);pointer-events:none;z-index:10;}
+#card::after{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(166,226,46,.06) 0%,transparent 65%);pointer-events:none;}
+.ctop{position:absolute;top:0;left:0;right:0;height:48px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:20;}
+.ctop-l{display:flex;align-items:center;gap:16px;}
+.dots{display:flex;gap:6px;}
+.dot{width:11px;height:11px;border-radius:50%;}
+.dr{background:#f92672;opacity:.7;}.dy{background:#e6db74;opacity:.7;}.dg{background:#a6e22e;opacity:.7;}
+.bc{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px;}
+.bc-sep{color:var(--border);}
+.bc-a{color:var(--comment);}
+.ctop-r{font-size:11px;color:var(--muted);letter-spacing:.04em;}
+.clns{position:absolute;left:0;top:48px;bottom:0;width:56px;border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:flex-end;padding:48px 12px 0;gap:14px;z-index:5;}
+.ln{font-size:13px;color:var(--muted);font-weight:300;line-height:1;opacity:.5;}
+.ln.a{color:var(--comment);opacity:1;}
+
+/* card content */
+.cc{position:absolute;left:56px;top:48px;right:0;bottom:0;padding:52px 64px 56px 44px;display:flex;flex-direction:column;z-index:5;}
+
+/* badge */
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;padding:6px 14px;border-radius:3px;border:1px solid;letter-spacing:.04em;width:fit-content;margin-bottom:28px;flex-shrink:0;}
+.bp{color:var(--red);   border-color:rgba(249,38,114,.4); background:rgba(249,38,114,.08);}
+.bd{color:var(--cyan);  border-color:rgba(102,217,232,.4);background:rgba(102,217,232,.08);}
+.bh{color:var(--purple);border-color:rgba(174,129,255,.4);background:rgba(174,129,255,.08);}
+.bdot{width:6px;height:6px;border-radius:50%;background:currentColor;}
+
+/* hook - auto-resize container */
+.mid-block{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;}
+.hook-area{display:flex;align-items:flex-start;overflow:hidden;}
+.hook-area.centered{justify-content:center;}
+
+#hook{
+  font-family:'Outfit',sans-serif;
+  font-size:88px;
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-.02em;
+  color:var(--text);
+  outline:none;
+  cursor:text;
+  caret-color:var(--green);
+  word-break:break-word;
+  width:100%;
+  /* key: don't let it grow past its container */
+  overflow:hidden;
+}
+#hook:empty::before{content:attr(data-ph);color:var(--muted);pointer-events:none;font-style:italic;}
+#hook *{font-family:inherit !important;}
+
+/* description */
+.desc-block{display:flex;flex-direction:column;gap:12px;margin-top:24px;flex-shrink:0;font-family:'JetBrains Mono',monospace;}
+.desc-line{font-size:34px;color:var(--comment);font-style:italic;line-height:1.5;}
+.desc-line::before{content:'// ';color:var(--muted);}
+
+/* footer */
+.cfoot{display:flex;align-items:baseline;justify-content:space-between;padding-top:32px;border-top:1px solid var(--border);flex-shrink:0;}
+.spine{font-size:13px;color:var(--comment);display:flex;align-items:baseline;gap:8px;}
+.sp{color:var(--border);font-size:16px;}
+.s1{color:var(--red);}.s2{color:var(--cyan);}.s3{color:var(--orange);}.s4{color:var(--green);}
+
+/* handle restyling using the SVG */
+.foot-center{display:flex;align-items:center;justify-content:center;gap:10px;}
+.x-icon{width:18px;height:18px;fill:rgba(248, 248, 242, 0.45);}
+.handle-x{font-size:18px;font-weight:500;color:rgba(248, 248, 242, 0.45);letter-spacing:.04em;}
+
+.brand-block{text-align:right;}
+.brand-dom{font-size:26px;font-weight:600;color:var(--green);background:rgba(166,226,46,.1);padding:9px 18px;border-radius:3px;border:1px solid rgba(166,226,46,.3);letter-spacing:.03em;display:inline-block;}
+
+/* ── Color popup ── */
+#cpop{position:fixed;display:none;z-index:9999;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:10px;box-shadow:0 8px 32px rgba(0,0,0,.6);}
+#cpop.show{display:block;}
+.cp-label{font-size:9px;color:var(--comment);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+.cp-row{display:flex;gap:7px;flex-wrap:wrap;max-width:200px;}
+.cp-sw{width:24px;height:24px;border-radius:3px;border:1.5px solid rgba(255,255,255,.12);cursor:pointer;transition:transform .1s,border-color .1s;position:relative;flex-shrink:0;}
+.cp-sw:hover{transform:scale(1.18);border-color:rgba(255,255,255,.4);}
+.cp-sw[data-reset]{background:var(--bg3);}
+.cp-sw[data-reset]::after{content:'↺';color:var(--comment);font-size:13px;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+</style>
+</head>
+<body>
+
+<aside>
+  <div class="sb-head">
+    <div class="sb-brand">post-card-gen.sh</div>
+    <div class="sb-sub">// LinkedIn post image generator · JetBrains Mono</div>
+  </div>
+  <div class="sb-body">
+
+    <div>
+      <span class="fl">// pillar</span>
+      <div class="row">
+        <button class="pbtn ap" data-pillar="problem">Problem</button>
+        <button class="pbtn" data-pillar="decision">Decision</button>
+        <button class="pbtn" data-pillar="honest">Honest</button>
+      </div>
+    </div>
+
+    <div>
+      <span class="fl">// headline font</span>
+      <div class="select-wrapper">
+        <select id="font-select" class="dropdown">
+          <optgroup label="Sans-Serif & Modern">
+            <option value="'Outfit', sans-serif">Outfit</option>
+            <option value="'Bricolage Grotesque', sans-serif">Bricolage Grotesque</option>
+            <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+            <option value="'Syne', sans-serif">Syne</option>
+            <option value="'Oswald', sans-serif">Oswald</option>
+            <option value="'Datatype', sans-serif">Datatype</option>
+            <option value="'Montserrat Alternates', sans-serif">Montserrat Alternates</option>
+            <option value="'Viga', sans-serif">Viga</option>
+            <option value="'Exo', sans-serif">Exo</option>
+            <option value="'Sekuya', sans-serif">Sekuya</option>
+            <option value="'Zalando Sans', sans-serif">Zalando Sans</option>
+            <option value="'Geom', sans-serif">Geom</option>
+            <option value="'Unbounded', sans-serif">Unbounded</option>
+            <option value="'IBM Plex Sans', sans-serif">IBM Plex Sans</option>
+            <option value="'Urbanist', sans-serif">Urbanist</option>
+            <option value="'Barlow Condensed', sans-serif">Barlow Condensed</option>
+            <option value="'Sora', sans-serif">Sora</option>
+            <option value="'Libre Franklin', sans-serif">Libre Franklin</option>
+            <option value="'Special Gothic', sans-serif">Special Gothic</option>
+          </optgroup>
+          <optgroup label="Serif & Editorial">
+            <option value="'Zilla Slab', serif">Zilla Slab</option>
+            <option value="'Playfair Display', serif">Playfair Display</option>
+            <option value="'Libre Baskerville', serif">Libre Baskerville</option>
+            <option value="'BioRhyme', serif">BioRhyme</option>
+            <option value="'DM Serif Text', serif">DM Serif Text</option>
+            <option value="'Newsreader', serif">Newsreader</option>
+            <option value="'Neuton', serif">Neuton</option>
+            <option value="'Fraunces', serif">Fraunces</option>
+          </optgroup>
+          <optgroup label="Display & Heavy">
+            <option value="'Archivo Black', sans-serif">Archivo Black</option>
+            <option value="'Bebas Neue', sans-serif">Bebas Neue</option>
+            <option value="'Bungee', sans-serif">Bungee</option>
+            <option value="'Changa One', sans-serif">Changa One</option>
+            <option value="'Poller One', serif">Poller One</option>
+            <option value="'Gravitas One', serif">Gravitas One</option>
+            <option value="'Orbitron', sans-serif">Orbitron</option>
+            <option value="'Sirin Stencil', sans-serif">Sirin Stencil</option>
+          </optgroup>
+          <optgroup label="Monospace (Code)">
+            <option value="'IBM Plex Mono', monospace">IBM Plex Mono</option>
+            <option value="'JetBrains Mono', monospace">JetBrains Mono</option>
+            <option value="'Geist Mono', monospace">Geist Mono</option>
+            <option value="'Noto Sans Mono', monospace">Noto Sans Mono</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <span class="fl">// description font</span>
+      <div class="select-wrapper">
+        <select id="desc-font-select" class="dropdown">
+          <optgroup label="Monospace (Code Vibe)">
+            <option value="'JetBrains Mono', monospace">JetBrains Mono</option>
+            <option value="'IBM Plex Mono', monospace">IBM Plex Mono</option>
+            <option value="'Geist Mono', monospace">Geist Mono</option>
+            <option value="'Noto Sans Mono', monospace">Noto Sans Mono</option>
+          </optgroup>
+          <optgroup label="Clean Sans-Serif">
+            <option value="'IBM Plex Sans', sans-serif">IBM Plex Sans</option>
+            <option value="'Libre Franklin', sans-serif">Libre Franklin</option>
+            <option value="'Sora', sans-serif">Sora</option>
+            <option value="'Outfit', sans-serif">Outfit</option>
+            <option value="'Urbanist', sans-serif">Urbanist</option>
+          </optgroup>
+          <optgroup label="Clean Serif">
+            <option value="'Newsreader', serif">Newsreader</option>
+            <option value="'Neuton', serif">Neuton</option>
+            <option value="'Libre Baskerville', serif">Libre Baskerville</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+
+    <div>
+      <span class="fl">// headline</span>
+      <span class="fh">Click the card headline to edit.<br>Select text → <b>color popup</b> appears.<br>Font shrinks automatically as you type.</span>
+    </div>
+
+    <div>
+      <span class="fl">// description items</span>
+      <div class="desc-list" id="desc-list"></div>
+      <button class="add-item" id="add-item">+ add item</button>
+    </div>
+
+    <div>
+      <span class="fl">// date</span>
+      <input type="text" id="input-date"/>
+    </div>
+
+  </div>
+  <div class="sb-foot">
+    <button class="dlbtn" id="dl1">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a6e22e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download 1x <span class="stag" id="lbl1">1080 × 1080</span>
+    </button>
+    <button class="dlbtn" id="dl2">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#a6e22e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download 2x <span class="stag" id="lbl2">2160 × 2160</span>
+    </button>
+  </div>
+</aside>
+
+<main>
+  <div id="sw">
+    <div id="card">
+
+      <div class="ctop">
+        <div class="ctop-l">
+          <div class="dots"><div class="dot dr"></div><div class="dot dy"></div><div class="dot dg"></div></div>
+          <div class="bc">
+            <span>indie-product-media</span>
+            <span class="bc-sep">›</span>
+            <span id="bc" class="bc-a">problem-angle.md</span>
+          </div>
+        </div>
+        <div class="ctop-r" id="date-top"></div>
+      </div>
+
+      <div class="clns">
+        <span class="ln">1</span><span class="ln a">2</span><span class="ln a">3</span>
+        <span class="ln a">4</span><span class="ln">5</span><span class="ln a">6</span>
+        <span class="ln a">7</span><span class="ln">8</span><span class="ln">9</span>
+        <span class="ln a">10</span><span class="ln a">11</span><span class="ln">12</span>
+        <span class="ln a">13</span><span class="ln">14</span><span class="ln">15</span>
+        <span class="ln a">16</span>
+      </div>
+
+      <div class="cc" id="cc">
+        <div id="badge" class="badge bp"><span class="bdot"></span><span id="badge-txt">Problem</span></div>
+
+        <div class="mid-block" id="mid-block">
+          <div class="hook-area" id="hook-area">
+            <div id="hook"
+                 contenteditable="true"
+                 spellcheck="false"
+                 data-ph="Click to write headline…"
+            ></div>
+          </div>
+          <div class="desc-block" id="desc-block"></div>
+        </div>
+
+        <div class="cfoot">
+          <div class="spine">
+            <span class="s1">Problem</span><span class="sp">→</span>
+            <span class="s2">Solution</span><span class="sp">→</span>
+            <span class="s3">Product</span><span class="sp">→</span>
+            <span class="s4">Founder</span>
+          </div>
+          
+          <div class="foot-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="x-icon" viewBox="0 0 16 16">
+              <path d="M12.6 0.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867 -5.07 -4.425 5.07H0.316l5.733 -6.57L0 0.75h5.063l3.495 4.633L12.601 0.75Zm-0.86 13.028h1.36L4.323 2.145H2.865z"></path>
+            </svg>
+            <span class="handle-x">@alvaisy</span>
+          </div>
+          
+          <div class="brand-block">
+            <div class="brand-dom">alwaisy.dev</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- color popup -->
+<div id="cpop">
+  <div class="cp-label">highlight color</div>
+  <div class="cp-row" id="cp-row"></div>
+</div>
+
+<script>
+// ── Configuration & Query Params ────────────────────────────────────────
+const urlParams = new URLSearchParams(window.location.search);
+
+function getArrayParam(key, fallback) {
+  const val = urlParams.get(key);
+  if (!val) return fallback;
+  try { return JSON.parse(val); } catch(e) { return fallback; }
+}
+
+const CONFIG = {
+  pillar: urlParams.get('pillar') || 'problem',
+  headline: urlParams.get('headline') || 'He shipped for <span style="color:var(--purple)">8 months</span>.<br>Not one <span style="color:var(--red)">paying customer</span>.',
+  headlineFont: urlParams.get('headlineFont') || "'Outfit', sans-serif",
+  descriptionItems: getArrayParam('descriptionItems', [
+    "Nobody wanted the app. They wanted the feeling of control.",
+    "He rebuilt around the emotion. $1,200 MRR in 6 weeks."
+  ]),
+  descriptionFont: urlParams.get('descriptionFont') || "'JetBrains Mono', monospace",
+  date: urlParams.get('date') || new Date().toISOString().slice(0,10)
+};
+
+// ── Pillars & App Config ────────────────────────────────────────
+const PILLARS = {
+  problem:  {label:'Problem',  cls:'bp', btn:'ap', file:'problem-angle.md' },
+  decision: {label:'Decision', cls:'bd', btn:'ad', file:'decision-angle.md'},
+  honest:   {label:'Honest',   cls:'bh', btn:'ah', file:'honest-angle.md'  },
+};
+const CARD_W = 1080;
+const CARD_H = 1080;
+const MAX_FS = 96;
+const MIN_FS = 32;
+
+let cur = CONFIG.pillar;
+let descItems = [...CONFIG.descriptionItems];
+let savedRange = null;
+
+
+// ── Event Listeners ────────────────────────────────────────
+document.getElementById('input-date').addEventListener('input', e => {
+  document.getElementById('date-top').textContent = e.target.value || CONFIG.date;
+});
+
+document.querySelectorAll('[data-pillar]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    cur = btn.dataset.pillar;
+    document.querySelectorAll('[data-pillar]').forEach(b => b.className='pbtn');
+    btn.classList.add('pbtn', PILLARS[cur].btn);
+    const p = PILLARS[cur];
+    document.getElementById('badge').className = `badge ${p.cls}`;
+    document.getElementById('badge-txt').textContent = p.label;
+    document.getElementById('bc').textContent = p.file;
+  });
+});
+
+document.getElementById('font-select').addEventListener('change', (e) => {
+  const hook = document.getElementById('hook');
+  hook.style.fontFamily = e.target.value;
+  setTimeout(fitHook, 50);
+});
+
+document.getElementById('desc-font-select').addEventListener('change', (e) => {
+  const descBlock = document.getElementById('desc-block');
+  descBlock.style.fontFamily = e.target.value;
+  setTimeout(fitHook, 50);
+});
+
+// ── Auto-fit hook font ───────────────────────────────────────
+function fitHook() {
+  const hook = document.getElementById('hook');
+  const mid  = document.getElementById('mid-block');
+
+  let lo = MIN_FS, hi = MAX_FS, best = MIN_FS;
+  hook.style.fontSize = `${hi}px`;
+
+  // constrain to 55% of mid-block height so desc has room
+  const descH = document.getElementById('desc-block').offsetHeight || 0;
+  const midH  = mid.offsetHeight;
+  const areaH = Math.max(midH - descH - 32, 80);
+  if (areaH === 0) return;
+
+  for (let i = 0; i < 14; i++) {
+    const mid = Math.round((lo + hi) / 2);
+    hook.style.fontSize = `${mid}px`;
+    if (hook.scrollHeight <= areaH) {
+      best = mid;
+      lo = mid + 1;
+    } else {
+      hi = mid - 1;
+    }
+  }
+  hook.style.fontSize = `${best}px`;
+  // line-height tightens as font grows
+  hook.style.lineHeight = best > 72 ? '1.08' : best > 52 ? '1.12' : '1.2';
+}
+
+document.getElementById('hook').addEventListener('input', fitHook);
+window.addEventListener('resize', () => { resizePreview(); fitHook(); });
+
+// ── Description ─────────────────────────────────────────────
+function renderDescSidebar() {
+  const list = document.getElementById('desc-list');
+  list.innerHTML = '';
+  descItems.forEach((txt, i) => {
+    const row = document.createElement('div');
+    row.className = 'desc-item';
+    const ta = document.createElement('textarea');
+    ta.rows = 2;
+    ta.value = txt;
+    ta.placeholder = `item ${i+1}`;
+    ta.addEventListener('input', e => { descItems[i] = e.target.value; renderDesc(); fitHook(); });
+    const rm = document.createElement('button');
+    rm.className = 'desc-rm';
+    rm.textContent = '×';
+    rm.addEventListener('click', () => { descItems.splice(i,1); renderDescSidebar(); renderDesc(); fitHook(); });
+    row.appendChild(ta);
+    row.appendChild(rm);
+    list.appendChild(row);
+  });
+}
+
+function renderDesc() {
+  const block = document.getElementById('desc-block');
+  const area  = document.getElementById('hook-area');
+  block.innerHTML = '';
+
+  const hasItems = descItems.some(t => t.trim());
+
+  if (!hasItems) {
+    block.style.display = 'none';
+    area.classList.add('centered');
+  } else {
+    block.style.display = 'flex';
+    area.classList.remove('centered');
+    descItems.forEach(txt => {
+      if (!txt.trim()) return;
+      const d = document.createElement('div');
+      d.className = 'desc-line';
+      d.textContent = txt;
+      block.appendChild(d);
+    });
+  }
+}
+
+document.getElementById('add-item').addEventListener('click', () => {
+  descItems.push('');
+  renderDescSidebar();
+  renderDesc();
+  fitHook();
+});
+
+// ── Color popup ──────────────────────────────────────────────
+const SWATCHES = [
+  {c:'#a6e22e'},{c:'#f92672'},{c:'#e6db74'},{c:'#66d9e8'},
+  {c:'#ae81ff'},{c:'#fd971f'},{c:'#f8f8f2'},{c:'#75715e'},
+  {reset:true}
+];
+
+const cpop    = document.getElementById('cpop');
+const cpRow   = document.getElementById('cp-row');
+
+SWATCHES.forEach(sw => {
+  const el = document.createElement('div');
+  el.className = 'cp-sw';
+  if (sw.reset) {
+    el.dataset.reset = '1';
+    el.title = 'remove color';
+  } else {
+    el.style.background = sw.c;
+    el.title = sw.c;
+  }
+  el.addEventListener('mousedown', e => {
+    e.preventDefault();
+    applyColor(sw.reset ? null : sw.c);
+    cpop.classList.remove('show');
+  });
+  cpRow.appendChild(el);
+});
+
+function applyColor(color) {
+  if (!savedRange) return;
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(savedRange);
+  if (!color) {
+    document.execCommand('removeFormat', false, null);
+  } else {
+    document.execCommand('foreColor', false, color);
+  }
+  savedRange = null;
+}
+
+document.getElementById('hook').addEventListener('mouseup', () => {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed) { cpop.classList.remove('show'); return; }
+  savedRange = sel.getRangeAt(0).cloneRange();
+  const rect = sel.getRangeAt(0).getBoundingClientRect();
+  cpop.style.left = `${rect.left + rect.width/2 - 108}px`;
+  cpop.style.top  = `${rect.top - 82}px`;
+  cpop.classList.add('show');
+});
+
+document.addEventListener('mousedown', e => {
+  if (!cpop.contains(e.target) && e.target.id !== 'hook') {
+    cpop.classList.remove('show');
+  }
+});
+
+// ── Resize preview ───────────────────────────────────────────
+function resizePreview() {
+  const m    = document.querySelector('main');
+  const sw   = document.getElementById('sw');
+  const card = document.getElementById('card');
+  const scale= Math.min((m.clientWidth-80)/CARD_W, (m.clientHeight-80)/CARD_H, 1);
+  card.style.width     = `${CARD_W}px`;
+  card.style.height    = `${CARD_H}px`;
+  card.style.transform = `scale(${scale})`;
+  sw.style.width       = `${CARD_W*scale}px`;
+  sw.style.height      = `${CARD_H*scale}px`;
+}
+
+// ── Download ─────────────────────────────────────────────────
+async function doDownload(scale) {
+  const card  = document.getElementById('card');
+  const hook  = document.getElementById('hook');
+  const btns  = document.querySelectorAll('.dlbtn');
+  
+  btns.forEach(b => b.disabled = true);
+  cpop.classList.remove('show');
+  hook.blur();
+  
+  const oldTransform = card.style.transform;
+  card.style.transform = 'none';
+
+  await new Promise(resolve => setTimeout(resolve, 50));
+
+  try {
+    const canvas = await html2canvas(card, {
+      width: CARD_W,
+      height: CARD_H,
+      scale: scale,
+      useCORS: true,
+      backgroundColor: '#272822',
+      logging: false
+    });
+    const a = document.createElement('a');
+    a.download = `awais-${cur}-square-${scale}x.png`;
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  } catch(e) { 
+    alert('Download failed: '+e.message); 
+  } finally {
+    card.style.transform = oldTransform;
+    btns.forEach(b => b.disabled = false);
+  }
+}
+document.getElementById('dl1').addEventListener('click', () => doDownload(1));
+document.getElementById('dl2').addEventListener('click', () => doDownload(2));
+
+// ── Init ─────────────────────────────────────────────────────
+
+// Apply CONFIG data to the UI
+document.getElementById('input-date').value = CONFIG.date;
+document.getElementById('date-top').textContent = CONFIG.date;
+
+const hookEl = document.getElementById('hook');
+hookEl.innerHTML = CONFIG.headline;
+hookEl.style.fontFamily = CONFIG.headlineFont;
+document.getElementById('font-select').value = CONFIG.headlineFont;
+
+const descBlockEl = document.getElementById('desc-block');
+descBlockEl.style.fontFamily = CONFIG.descriptionFont;
+document.getElementById('desc-font-select').value = CONFIG.descriptionFont;
+
+const activePillarBtn = document.querySelector(`[data-pillar="${cur}"]`);
+if(activePillarBtn) {
+  document.querySelectorAll('[data-pillar]').forEach(b => b.className='pbtn');
+  activePillarBtn.classList.add('pbtn', PILLARS[cur].btn);
+  document.getElementById('badge').className = `badge ${PILLARS[cur].cls}`;
+  document.getElementById('badge-txt').textContent = PILLARS[cur].label;
+  document.getElementById('bc').textContent = PILLARS[cur].file;
+}
+
+renderDescSidebar();
+renderDesc();
+resizePreview();
+// slight delay to let fonts load then fit
+setTimeout(() => fitHook(), 200);
+
+</script>
+</body>
+</html>

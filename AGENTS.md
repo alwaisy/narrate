@@ -4,8 +4,11 @@ A Bash-driven content engine that automates Reddit thread discovery and Gemini-p
 
 ## Build & Test
 
+### Setup
 • Install system deps: `sudo apt install jq curl lynx pandoc`
 • Install dashboard deps: `cd dashboard && npm install`
+
+### Running the Pipeline
 • Run master workflow: `bash main.sh scout`
 • Fetch specific Reddit thread: `bash main.sh fetch_reddit <url>`
 • Fetch web article: `bash main.sh fetch_article <url>`
@@ -13,10 +16,22 @@ A Bash-driven content engine that automates Reddit thread discovery and Gemini-p
 • Rebuild template index: `bash main.sh build_index`
 • Get template by ID: `bash main.sh get_template <id>`
 • Reset all data: `bash main.sh reset`
+
+### Dashboard & Management
 • Start dashboard: `bash start_dashboard.sh`
 • Launch TUI post manager: `bash manage.sh`
 • Initialize AI context: `gemini init`
 • Execute Brain pipeline: `gemini go`
+
+### Testing
+• Run a single test: `bash main.sh scout` (validates the entire pipeline)
+• Verify dashboard: `node dashboard/server.js` (checks for errors on startup)
+• Validate template structure: Ensure new templates match the schema in `templates/linkedin-templates.json`
+
+### Linting
+• Bash scripts: Use `shellcheck` for linting (install via `sudo apt install shellcheck`)
+• JavaScript: Use ESLint (configured in `dashboard/package.json`)
+• JSON: Validate with `jq` (e.g., `jq . templates/linkedin-templates.json`)
 
 ## Project Layout
 
@@ -76,6 +91,37 @@ Status is encoded in filenames as `[STATUS]-name.md`. The frontend lives in `das
 • Data structures: Preserve `processed_sources.json` structure exactly; changes break the cool-down pipeline
 • Configuration: All paths, subreddits, and TZ stay in `config.sh`; API keys in `.env`
 • Dashboard: CommonJS Express with pino logging, no TypeScript
+
+### Naming Conventions
+• Bash variables: UPPER_CASE for globals, lowercase for locals
+• JavaScript variables: camelCase for variables and functions, PascalCase for classes
+• File names: kebab-case for scripts and assets, snake_case for data files
+• Directories: lowercase, hyphenated for clarity
+
+### Imports and Dependencies
+• Bash: Source `config.sh` for shared variables and functions
+• JavaScript: Use CommonJS `require` syntax; avoid ES modules
+• External libraries: Only use `jq`, `curl`, `lynx`, and `pandoc` for system operations
+
+### Error Handling
+• Bash: Use `set -euo pipefail` to fail fast on errors
+• JavaScript: Use try-catch blocks for async operations; log errors with pino
+• Validation: Check for required fields in JSON structures before processing
+
+### Formatting
+• Indentation: 2 spaces for JavaScript, 4 spaces for Bash
+• Line length: Avoid lines longer than 100 characters
+• Quotes: Double quotes for strings in Bash, single quotes for JavaScript strings
+• Comments: Use `#` for Bash comments, `//` for JavaScript comments
+
+### Types
+• JavaScript: No TypeScript; use JSDoc for type annotations if needed
+• Bash: No type system; ensure variables are validated before use
+
+### Security
+• Never commit secrets or API keys; use `.env` for sensitive data
+• Validate all external inputs to prevent injection attacks
+• Use HTTPS for all external API calls
 
 ### Error Handling
 • Thin source flag: If Reddit data is sparse, flag as [THIN SOURCE] in the draft

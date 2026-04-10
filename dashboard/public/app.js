@@ -3,6 +3,7 @@ let state = {
     topics: [],
     currentTopic: null,
     currentPost: null,
+    currentPostMetadata: '',
     isEditing: false,
     originalContent: '',
     showingArchived: false,
@@ -35,9 +36,16 @@ const dom = {
     editIndicator: document.getElementById('edit-indicator'),
     saveHint: document.getElementById('save-hint'),
     copyButton: document.getElementById('copy-to-linkedin-btn'),
+    copyPathButton: document.getElementById('copy-path-btn'),
+    generatePosterButton: document.getElementById('generate-poster-btn'),
     reportPanel: document.getElementById('report-panel'),
     reportEmpty: document.getElementById('report-empty'),
-    reportContent: document.getElementById('report-content')
+    reportContent: document.getElementById('report-content'),
+    // Poster Preview Elements
+    posterPreview: document.getElementById('poster-data-preview'),
+    previewHeadline: document.getElementById('preview-headline'),
+    previewItems: document.getElementById('preview-items'),
+    previewPillarBadge: document.getElementById('preview-pillar-badge')
 };
 
 // --- Routing Engine ---
@@ -57,10 +65,14 @@ const router = {
 
         if (topicId) {
             await this.loadTopic(topicId, angleFile);
-            dom.copyButton.classList.remove('hidden'); // Show copy button when a post is open
+            dom.copyButton.classList.remove('hidden');
+            dom.copyPathButton.classList.remove('hidden');
+            dom.generatePosterButton.classList.remove('hidden');
         } else {
             this.showEmpty();
-            dom.copyButton.classList.add('hidden'); // Hide copy button when no post is open
+            dom.copyButton.classList.add('hidden');
+            dom.copyPathButton.classList.add('hidden');
+            dom.generatePosterButton.classList.add('hidden');
         }
     },
 
@@ -154,14 +166,17 @@ async function fetchPostContent(topicId, filename) {
 }
 
 async function savePost(topicId, filename, content) {
-    dom.saveStatus.textContent = 'Saving...';
-    await fetch(`/api/posts/${topicId}/${encodeURIComponent(filename)}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content })
-    });
-    dom.saveStatus.textContent = 'Changes saved';
-    setTimeout(() => { if (!state.isEditing) dom.saveStatus.textContent = 'Ready'; }, 2000);
+    try {
+        await fetch(`/api/posts/${topicId}/${encodeURIComponent(filename)}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content })
+        });
+        window.toast?.success('Changes saved successfully');
+    } catch (err) {
+        console.error('Save failed', err);
+        window.toast?.error('Failed to save changes');
+    }
 }
 
 async function fetchReport(topicId) {
@@ -216,7 +231,11 @@ async function exitEditMode() {
     dom.saveHint.classList.add('hidden');
 
     if (dom.editor.value !== state.originalContent) {
-        await savePost(state.currentTopic.id, state.currentPost.raw, dom.editor.value);
+        // Re-attach metadata if it exists
+        const fullContent = state.currentPostMetadata 
+            ? `${dom.editor.value}\n\n${state.currentPostMetadata}`
+            : dom.editor.value;
+        await savePost(state.currentTopic.id, state.currentPost.raw, fullContent);
     }
 }
 
@@ -226,9 +245,21 @@ async function selectAngle(rawFilename) {
 
     state.currentPost = angle;
     const content = await fetchPostContent(state.currentTopic.id, angle.raw);
-    dom.editor.value = content;
     
-    // Don't overwrite success messages immediately
+    // Split content: post_body vs poster_data
+    const splitRegex = /(.*?)(\n*<!--\s*\[POSTER_DATA\].*?-->)/s;
+    const match = content.match(splitRegex);
+    
+    if (match) {
+        dom.editor.value = match[1].trim();
+        state.currentPostMetadata = match[2].trim();
+        renderPosterPreview(state.currentPostMetadata);
+    } else {
+        dom.editor.value = content.trim();
+        state.currentPostMetadata = '';
+        dom.posterPreview.classList.add('hidden');
+    }
+    
     if (!dom.saveStatus.textContent.includes('Copied')) {
         dom.saveStatus.textContent = 'Ready';
     }
@@ -237,17 +268,46 @@ async function selectAngle(rawFilename) {
     renderStatus();
 }
 
+function renderPosterPreview(rawMetadata) {
+    const metaMatch = rawMetadata.match(/\[POSTER_DATA\]\s+headline:\s*"(.*?)"\s*\|\s*description_items:\s*(\[.*?\])\s*\|\s*pillar:\s*"(.*?)"/s);
+    
+    if (!metaMatch) {
+        dom.posterPreview.classList.add('hidden');
+        return;
+    }
+
+    const [_, headline, itemsJson, pillar] = metaMatch;
+    const items = JSON.parse(itemsJson);
+
+    dom.previewHeadline.textContent = headline;
+    dom.previewItems.innerHTML = items.map(item => `
+        <li class="flex items-start gap-2 text-xs text-gray-600 italic">
+            <span class="text-[#0A66C2] font-bold">//</span>
+            <span>${item}</span>
+        </li>
+    `).join('');
+
+    // Style badge based on pillar
+    const colors = {
+        problem: 'bg-red-50 text-red-700 border-red-100',
+        decision: 'bg-blue-50 text-blue-700 border-blue-100',
+        honest: 'bg-purple-50 text-purple-700 border-purple-100'
+    };
+    
+    dom.previewPillarBadge.className = `px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest border ${colors[pillar] || 'bg-gray-50'}`;
+    dom.previewPillarBadge.textContent = pillar;
+    
+    dom.posterPreview.classList.remove('hidden');
+}
+
 async function updateStatus(newStatus, skipConfirm = false) {
     if (!skipConfirm && (newStatus === 'PUBLISHED' || newStatus === 'SKIPPED')) {
         if (!confirm(`Mark as ${newStatus}?`)) return;
     }
 
-    // Capture context immediately to avoid race conditions during navigation
     const targetTopic = state.currentTopic;
     const targetPost = state.currentPost;
     if (!targetTopic || !targetPost) return;
-
-    dom.saveStatus.textContent = 'Updating status...';
 
     try {
         const res = await fetch(`/api/posts/${targetTopic.id}/${encodeURIComponent(targetPost.raw)}/status`, {
@@ -258,28 +318,21 @@ async function updateStatus(newStatus, skipConfirm = false) {
         const data = await res.json();
         
         if (data.success) {
-            // Update the specific post's local state using captured context
             const idx = targetTopic.angles.findIndex(a => a.raw === targetPost.raw);
             if (idx !== -1) {
                 targetTopic.angles[idx].status = newStatus;
                 targetTopic.angles[idx].raw = data.newFilename;
             }
-            
-            // Re-fetch all topics to sync with disk
             await fetchTopics();
-            
-            // Only update URL if we are still looking at the same post
             if (state.currentPost?.raw === targetPost.raw) {
                 const newPath = `#/topic/${targetTopic.id}/angle/${encodeURIComponent(data.newFilename)}`;
                 router.navigate(newPath);
             }
-            
-            dom.saveStatus.textContent = 'Status updated';
-            setTimeout(() => { if (!state.isEditing) dom.saveStatus.textContent = 'Ready'; }, 2000);
+            window.toast?.success(`Status: ${newStatus}`);
         }
     } catch (err) {
         console.error('Status update failed', err);
-        dom.saveStatus.textContent = 'Update failed';
+        window.toast?.error('Status update failed');
     }
 }
 
@@ -300,6 +353,9 @@ async function toggleArchiveTopic(topicId, shouldArchive) {
         if (activeTopicIdBefore === topicId) router.navigate('#/');
         await fetchTopics();
         renderTopics();
+        window.toast?.success(`Topic ${shouldArchive ? 'archived' : 'restored'}`);
+    } else {
+        window.toast?.error(`Failed to ${action} topic`);
     }
 }
 
@@ -363,30 +419,69 @@ async function copyCurrentPost() {
     try {
         if (state.isEditing) await exitEditMode();
         if (!state.currentPost) return;
-        
         const content = dom.editor.value;
-        
-        // Use Browser Clipboard API
         await navigator.clipboard.writeText(content);
         
-        dom.saveStatus.textContent = 'Copied to clipboard!';
-        
-        // Auto-publish if it's READY or DRAFT
         if (state.currentPost.status === 'READY' || state.currentPost.status === 'DRAFT') {
-            dom.saveStatus.textContent = 'Copying & Publishing...';
             await updateStatus('PUBLISHED', true);
-            dom.saveStatus.textContent = 'Copied & Published!';
+            window.toast?.success('Copied & Published!');
+        } else {
+            window.toast?.success('Copied to clipboard!');
         }
-        
-        setTimeout(() => {
-            if (dom.saveStatus.textContent.includes('Copied')) {
-                dom.saveStatus.textContent = 'Ready';
-            }
-        }, 3000);
     } catch (err) {
         console.error('Copy failed', err);
-        dom.saveStatus.textContent = 'Copy failed: ' + err.message;
+        window.toast?.error('Copy failed');
     }
+}
+
+async function copyPostPath() {
+    if (!state.currentTopic || !state.currentPost) return;
+    const path = `content/posts/${state.currentTopic.id}/${state.currentPost.raw}`;
+    try {
+        await navigator.clipboard.writeText(path);
+        window.toast?.info('File path copied');
+    } catch (err) {
+        console.error('Failed to copy path', err);
+        window.toast?.error('Copy failed');
+    }
+}
+
+async function generatePoster() {
+    if (state.isEditing) await exitEditMode();
+    if (!state.currentPost) return;
+
+    // Use currentPostMetadata if it exists (the "Shadow" metadata)
+    const contentToParse = state.currentPostMetadata || dom.editor.value;
+    
+    // Improved regex: handles newlines (\s), multiple spaces
+    const metaMatch = contentToParse.match(/\[POSTER_DATA\]\s+headline:\s*"(.*?)"\s*\|\s*description_items:\s*(\[.*?\])\s*\|\s*pillar:\s*"(.*?)"/s);
+    
+    let params = new URLSearchParams();
+    
+    if (metaMatch) {
+        params.set('headline', metaMatch[1].trim());
+        params.set('descriptionItems', metaMatch[2].trim());
+        params.set('pillar', metaMatch[3].trim());
+        window.toast?.info('Using POSTER_DATA metadata');
+    } else {
+        // Fallback: Smart heuristic
+        const lines = dom.editor.value.split('\n')
+            .map(l => l.trim())
+            .filter(l => l.length > 0 && !l.startsWith('#') && !l.startsWith('<!--'));
+        
+        const headline = lines.slice(0, 2).join(' ').slice(0, 100);
+        params.set('headline', headline || 'My Headline');
+        
+        const descLines = lines.slice(2, 4);
+        params.set('descriptionItems', JSON.stringify(descLines));
+        
+        const pillarMatch = state.currentPost.raw.match(/_([a-z]+)_angle/);
+        params.set('pillar', pillarMatch ? pillarMatch[1] : 'problem');
+        window.toast?.warn('No POSTER_DATA found, using fallback');
+    }
+    
+    params.set('date', state.currentTopic.date.split(' ')[0] || new Date().toISOString().slice(0, 10));
+    window.open(`/poster?${params.toString()}`, '_blank');
 }
 
 // --- Initialization ---
@@ -396,6 +491,8 @@ async function init() {
     router.init();
     
     dom.copyButton.onclick = copyCurrentPost;
+    dom.copyPathButton.onclick = copyPostPath;
+    dom.generatePosterButton.onclick = generatePoster;
 
     dom.topicFilter.addEventListener('input', (e) => {
         state.filterQuery = e.target.value.toLowerCase();

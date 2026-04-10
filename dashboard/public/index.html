@@ -7,6 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/toast-vanilla@1.0.6/dist/index.css" />
+    <script type="module">
+      import { ToastVanilla } from 'https://unpkg.com/toast-vanilla@1.0.6/dist/index.min.js';
+      window.toast = new ToastVanilla({ 
+        position: 'top-left',
+        duration: 3000,
+        maxItemToRender: 3,
+        styles: {
+            successColor: '#0A66C2', // LinkedIn blue
+            infoColor: '#0A66C2',
+            borderRadius: 8
+        }
+      });
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
@@ -102,12 +116,19 @@
             font-size: 0.8125rem;
             margin-bottom: 0.5rem;
         }
+        /* Fix z-index for toasts using library-specific data attributes */
+        [data-toaster-content] {
+            z-index: 9999 !important;
+        }
+        [data-toast-item] {
+            z-index: 9999 !important;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 h-screen flex overflow-hidden">
 
     <!-- Sidebar -->
-    <aside class="w-[21rem] bg-white border-r border-gray-200 flex flex-col h-full shadow-sm">
+    <aside class="w-[21rem] bg-white border-r border-gray-200 flex flex-col h-full shadow-sm relative z-50">
         <div class="p-6 border-b border-gray-100 bg-white sticky top-0 z-10">
             <a href="#/" class="block">
                 <h1 class="text-xl font-bold flex items-center gap-2 mb-4">
@@ -150,6 +171,12 @@
                 </div>
             </div>
             <div class="flex gap-3 items-center">
+                <button id="copy-path-btn" class="px-4 py-2 text-sm font-medium text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50 shadow-sm transition-all flex items-center gap-2 hidden">
+                    <i class="ph ph-terminal"></i> Copy Path
+                </button>
+                <button id="generate-poster-btn" class="px-4 py-2 text-sm font-medium text-[#0A66C2] border border-[#0A66C2] rounded-lg hover:bg-[#0A66C2] hover:text-white shadow-sm transition-all flex items-center gap-2 hidden">
+                    <i class="ph ph-image"></i> Generate Poster
+                </button>
                 <button id="copy-to-linkedin-btn" class="px-4 py-2 text-sm font-medium text-white bg-[#0A66C2] rounded-lg hover:bg-[#004182] shadow-sm transition-all flex items-center gap-2 hidden">
                     <i class="ph ph-copy"></i> Copy to LinkedIn
                 </button>
@@ -161,21 +188,47 @@
 
             <!-- Left: Post Editor -->
             <div class="flex-1 overflow-y-auto p-8 flex justify-center">
-                <div id="editor-container" class="w-full max-w-2xl bg-white rounded-xl border border-gray-200 shadow-sm p-8 h-fit transition-all">
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="flex gap-2 items-center">
-                            <div id="post-status-badge"></div>
-                            <span id="edit-indicator" class="px-2 py-1 bg-gray-100 text-gray-500 rounded text-[10px] font-bold uppercase tracking-wider">View Mode</span>
+                <div class="w-full max-w-2xl flex flex-col gap-6">
+                    <div id="editor-container" class="w-full bg-white rounded-xl border border-gray-200 shadow-sm p-8 h-fit transition-all">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex gap-2 items-center">
+                                <div id="post-status-badge"></div>
+                                <span id="edit-indicator" class="px-2 py-1 bg-gray-100 text-gray-500 rounded text-[10px] font-bold uppercase tracking-wider">View Mode</span>
+                            </div>
+                            <div class="flex gap-1 bg-gray-100 p-1 rounded-lg" id="status-toggles"></div>
                         </div>
-                        <div class="flex gap-1 bg-gray-100 p-1 rounded-lg" id="status-toggles"></div>
+                        <textarea id="post-editor" 
+                            readonly
+                            class="w-full editor-textarea focus:outline-none text-lg text-gray-700 placeholder-gray-400 resize-none bg-transparent cursor-default"
+                            placeholder="Press 'E' to edit..."></textarea>
+                        <div id="modal-hint" class="mt-4 text-[10px] text-gray-400 uppercase tracking-widest flex justify-between">
+                            <span>Press <kbd class="px-1 bg-gray-100 border rounded text-gray-600">E</kbd> to edit</span>
+                            <span class="hidden" id="save-hint">Press <kbd class="px-1 bg-gray-100 border rounded text-gray-600">ESC</kbd> to save & exit</span>
+                        </div>
                     </div>
-                    <textarea id="post-editor" 
-                        readonly
-                        class="w-full editor-textarea focus:outline-none text-lg text-gray-700 placeholder-gray-400 resize-none bg-transparent cursor-default"
-                        placeholder="Press 'E' to edit..."></textarea>
-                    <div id="modal-hint" class="mt-4 text-[10px] text-gray-400 uppercase tracking-widest flex justify-between">
-                        <span>Press <kbd class="px-1 bg-gray-100 border rounded text-gray-600">E</kbd> to edit</span>
-                        <span class="hidden" id="save-hint">Press <kbd class="px-1 bg-gray-100 border rounded text-gray-600">ESC</kbd> to save & exit</span>
+
+                    <!-- New: Formatted Poster Data Preview -->
+                    <div id="poster-data-preview" class="w-full bg-white rounded-xl border border-gray-100 shadow-sm p-6 hidden">
+                        <div class="flex items-center gap-2 mb-4 border-b border-gray-50 pb-3">
+                            <i class="ph-bold ph-magic-wand text-[#0A66C2]"></i>
+                            <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Poster Content Preview</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-[10px] text-gray-400 uppercase font-bold tracking-tighter">Headline</span>
+                                <p id="preview-headline" class="text-lg font-bold text-gray-800 leading-tight mt-1"></p>
+                            </div>
+                            <div id="preview-items-container">
+                                <span class="text-[10px] text-gray-400 uppercase font-bold tracking-tighter">Description Items</span>
+                                <ul id="preview-items" class="mt-2 space-y-2">
+                                    <!-- Items injected here -->
+                                </ul>
+                            </div>
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-50 mt-4">
+                                <span id="preview-pillar-badge" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest"></span>
+                                <span class="text-[9px] text-gray-300 italic">Synced with [POSTER_DATA] block</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

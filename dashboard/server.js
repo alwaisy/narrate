@@ -37,6 +37,16 @@ app.use('*', cors());
 app.use('/*', serveStatic({ 
     root: path.relative(process.cwd(), PUBLIC_DIR) 
 }));
+
+app.get('/poster', (c) => {
+    try {
+        const content = fs.readFileSync(path.join(PUBLIC_DIR, 'poster.html'), 'utf-8');
+        return c.html(content);
+    } catch (err) {
+        return c.text('Poster generator not found', 404);
+    }
+});
+
 app.get('/', serveStatic({ 
     path: path.relative(process.cwd(), path.join(PUBLIC_DIR, 'index.html')) 
 }));
