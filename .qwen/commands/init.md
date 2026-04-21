@@ -1,8 +1,8 @@
 ---
-description: Initialize AI context by analyzing codebase and creating/updating GEMINI.md (Factory AI version)
+description: Initialize AI context by analyzing codebase and creating/updating QWEN.md (Factory AI version)
 ---
 
-Act as a Senior Lead Architect. I want to initialize this repository for AI-assisted development, creating a comprehensive GEMINI.md that works as the primary context for Gemini CLI and other AI coding agents.
+Act as a Senior Lead Architect. I want to initialize this repository for AI-assisted development, creating a comprehensive QWEN.md that works as the primary context for Gemini CLI and other AI coding agents.
 
 ## Primary Tasks
 
@@ -51,8 +51,8 @@ Recursively scan the project (ignoring node_modules, .git, dist, build, .next, .
 ### 2. Context Gathering
 Read and integrate from existing files:
 - **README.md** - project overview, setup instructions, key features
-- **GEMINI.md** (if exists) - preserve valuable content, improve structure
-- **CLAUDE.md** - convert to GEMINI.md format, merge insights
+- **QWEN.md** (if exists) - preserve valuable content, improve structure
+- **CLAUDE.md** - convert to QWEN.md format, merge insights
 - **.cursorrules** or **.cursor/rules/** - Cursor-specific rules
 - **.github/copilot-instructions.md** - Copilot rules
 - **package.json** - extract ALL scripts, dependencies, dev dependencies
@@ -62,7 +62,7 @@ Read and integrate from existing files:
 - **CI/CD configs** - GitHub Actions, GitLab CI, etc.
 - **Config files** - ESLint, Prettier, Jest, Vitest, etc.
 
-### 3. Create Comprehensive GEMINI.md
+### 3. Create Comprehensive QWEN.md
 
 Follow this structure but enhance with all best practices:
 
@@ -242,10 +242,10 @@ A pull request is reviewable when it includes:
 
 ## Special Instructions
 
-If $ARGUMENTS contains "overwrite", replace existing GEMINI.md entirely.
-If $ARGUMENTS contains "update" or is empty, improve existing GEMINI.md.
+If $ARGUMENTS contains "overwrite", replace existing QWEN.md entirely.
+If $ARGUMENTS contains "update" or is empty, improve existing QWEN.md.
 
-After creating/updating GEMINI.md:
+After creating/updating QWEN.md:
 1. Confirm the file was written successfully with path
 2. Provide summary of sections added/changed
 3. Highlight key architectural decisions discovered
@@ -254,7 +254,7 @@ After creating/updating GEMINI.md:
 
 ---
 
-**Note:** Creates/Updates GEMINI.md which is the foundational context for Gemini CLI. Use a reasoning model (GPT-5 Mini, Claude Opus) for best results with complex codebases.
+**Note:** Creates/Updates QWEN.md which is the foundational context for Gemini CLI. Use a reasoning model (GPT-5 Mini, Claude Opus) for best results with complex codebases.
 
 ## Primary Tasks (v2)
 
@@ -288,16 +288,16 @@ Recursively scan the project (ignoring node_modules, .git, dist, build) to ident
 ### 2. Context Gathering
 Read and integrate from existing files:
 - README.md - project overview and setup
-- GEMINI.md (if exists) - preserve and improve
-- CLAUDE.md - convert to GEMINI.md format
+- QWEN.md (if exists) - preserve and improve
+- CLAUDE.md - convert to QWEN.md format
 - .cursorrules or .cursor/rules/** - Cursor-specific rules
 - .github/copilot-instructions.md - Copilot rules
 - package.json - scripts and dependencies
 - tsconfig.json - TypeScript configuration
 - .env.example - environment variables
 
-### 3. GEMINI.md Structure
-Create/update GEMINI.md with these sections:
+### 3. QWEN.md Structure
+Create/update QWEN.md with these sections:
 
 ```markdown
 # [Project Name]
@@ -419,4 +419,3 @@ Use casual, friendly language. Frame actions as progress, not commitments. Stay 
 - Sound like a real human talking.
 
 {{args}}
-

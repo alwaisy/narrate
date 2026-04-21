@@ -230,6 +230,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- New: Comments Preview -->
+                    <div id="comments-preview" class="w-full bg-white rounded-xl border border-gray-100 shadow-sm p-6 hidden">
+                        <div class="flex items-center gap-2 mb-4 border-b border-gray-50 pb-3">
+                            <i class="ph-bold ph-chat-circle-dots text-[#0A66C2]"></i>
+                            <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Post Comments</h3>
+                            <span id="comments-count" class="ml-auto text-[9px] text-gray-300 font-bold"></span>
+                        </div>
+                        <div id="comments-list" class="space-y-3">
+                            <!-- Comments injected here -->
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-gray-50 mt-4">
+                            <button id="copy-comments-btn" class="text-[9px] text-gray-400 hover:text-[#0A66C2] uppercase tracking-widest font-bold flex items-center gap-1">
+                                <i class="ph ph-copy"></i> Copy All Comments
+                            </button>
+                            <span class="text-[9px] text-gray-300 italic">Synced with [COMMENT_XX] blocks</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 

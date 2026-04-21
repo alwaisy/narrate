@@ -26,6 +26,7 @@ usage() {
     echo "  fetch_article  - Fetch a specific web article (fetch_article.sh <url>)"
     echo "  build_index    - Rebuild the template index (build_index.sh)"
     echo "  get_template   - Print a template JSON by ID (get_template.sh <id>)"
+    echo "  generate_comments - Generate 1-3 self-comments for a post (generate_comments.sh <post-path>)"
     echo "  reset          - Wipe all logs, drafts, posts, and temp data"
 }
 
@@ -67,7 +68,12 @@ main() {
         get_template)
             bash "${SCRIPT_DIR}/lib/get_template.sh" "$@"
             ;;
-            
+
+        generate_comments)
+            log_step "Routing: 'generate_comments' -> lib/generate_comments.sh"
+            bash "${SCRIPT_DIR}/lib/generate_comments.sh" "$@"
+            ;;
+
         reset)
             log_step "Routing: 'reset' -> Cleaning project directories..."
             rm -rf "${SCRIPT_DIR}/logs/"* \

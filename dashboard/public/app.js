@@ -4,6 +4,7 @@ let state = {
     currentTopic: null,
     currentPost: null,
     currentPostMetadata: '',
+    currentComments: [],
     isEditing: false,
     originalContent: '',
     showingArchived: false,
@@ -45,7 +46,12 @@ const dom = {
     posterPreview: document.getElementById('poster-data-preview'),
     previewHeadline: document.getElementById('preview-headline'),
     previewItems: document.getElementById('preview-items'),
-    previewPillarBadge: document.getElementById('preview-pillar-badge')
+    previewPillarBadge: document.getElementById('preview-pillar-badge'),
+    // Comments Preview Elements
+    commentsPreview: document.getElementById('comments-preview'),
+    commentsList: document.getElementById('comments-list'),
+    commentsCount: document.getElementById('comments-count'),
+    copyCommentsButton: document.getElementById('copy-comments-btn')
 };
 
 // --- Routing Engine ---
@@ -231,10 +237,17 @@ async function exitEditMode() {
     dom.saveHint.classList.add('hidden');
 
     if (dom.editor.value !== state.originalContent) {
-        // Re-attach metadata if it exists
-        const fullContent = state.currentPostMetadata 
-            ? `${dom.editor.value}\n\n${state.currentPostMetadata}`
-            : dom.editor.value;
+        // Re-attach metadata: POSTER_DATA + comments
+        let fullContent = dom.editor.value;
+        if (state.currentPostMetadata) {
+            fullContent += `\n\n${state.currentPostMetadata}`;
+        }
+        if (state.currentComments && state.currentComments.length > 0) {
+            const commentsBlock = state.currentComments.map(c =>
+                `\n\n<!-- [COMMENT_${String(c.index).padStart(2, '0')}] type: "${c.type}" | text: "${c.text}" -->`
+            ).join('');
+            fullContent += commentsBlock;
+        }
         await savePost(state.currentTopic.id, state.currentPost.raw, fullContent);
     }
 }
@@ -245,25 +258,47 @@ async function selectAngle(rawFilename) {
 
     state.currentPost = angle;
     const content = await fetchPostContent(state.currentTopic.id, angle.raw);
-    
-    // Split content: post_body vs poster_data
-    const splitRegex = /(.*?)(\n*<!--\s*\[POSTER_DATA\].*?-->)/s;
-    const match = content.match(splitRegex);
-    
-    if (match) {
-        dom.editor.value = match[1].trim();
-        state.currentPostMetadata = match[2].trim();
+
+    // Parse all comment blocks
+    const commentRegex = /<!--\s*\[COMMENT_(\d+)\]\s+type:\s*"([^"]+)"\s*\|\s*text:\s*"([^"]+)"\s*-->/g;
+    const comments = [];
+    let match;
+    while ((match = commentRegex.exec(content)) !== null) {
+        comments.push({
+            index: parseInt(match[1]),
+            type: match[2],
+            text: match[3]
+        });
+    }
+    state.currentComments = comments;
+
+    // Strip POSTER_DATA and comments to get clean post body
+    const posterMetaRegex = /<!--\s*\[POSTER_DATA\].*?-->/s;
+    const commentsBlockRegex = /(?:\s*<!--\s*\[COMMENT_\d+\].*?-->)+\s*$/s;
+
+    const posterMatch = content.match(posterMetaRegex);
+    state.currentPostMetadata = posterMatch ? posterMatch[0].trim() : '';
+
+    // Get clean post body by stripping both metadata blocks
+    let cleanBody = content;
+    cleanBody = cleanBody.replace(commentsBlockRegex, '');
+    cleanBody = cleanBody.replace(posterMetaRegex, '');
+    cleanBody = cleanBody.trim();
+
+    dom.editor.value = cleanBody;
+
+    if (state.currentPostMetadata) {
         renderPosterPreview(state.currentPostMetadata);
     } else {
-        dom.editor.value = content.trim();
-        state.currentPostMetadata = '';
         dom.posterPreview.classList.add('hidden');
     }
-    
+
+    renderComments(comments);
+
     if (!dom.saveStatus.textContent.includes('Copied')) {
         dom.saveStatus.textContent = 'Ready';
     }
-    
+
     renderAngles();
     renderStatus();
 }
@@ -298,6 +333,75 @@ function renderPosterPreview(rawMetadata) {
     dom.previewPillarBadge.textContent = pillar;
     
     dom.posterPreview.classList.remove('hidden');
+}
+
+function renderComments(comments) {
+    if (!comments || comments.length === 0) {
+        dom.commentsPreview.classList.add('hidden');
+        return;
+    }
+
+    dom.commentsCount.textContent = `${comments.length} comment${comments.length > 1 ? 's' : ''}`;
+
+    const typeColors = {
+        question: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', dot: 'bg-blue-500' },
+        validation: { bg: 'bg-green-50', text: 'text-green-700', border: 'border-green-200', dot: 'bg-green-500' },
+        personal_experience: { bg: 'bg-purple-50', text: 'text-purple-700', border: 'border-purple-200', dot: 'bg-purple-500' },
+        contrarian_addition: { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200', dot: 'bg-orange-500' },
+        resource_drop: { bg: 'bg-cyan-50', text: 'text-cyan-700', border: 'border-cyan-200', dot: 'bg-cyan-500' }
+    };
+
+    const typeLabels = {
+        question: 'Question',
+        validation: 'Validation',
+        personal_experience: 'Personal',
+        contrarian_addition: 'Addition',
+        resource_drop: 'Resource'
+    };
+
+    dom.commentsList.innerHTML = comments.map(comment => {
+        const colors = typeColors[comment.type] || typeColors.question;
+        const label = typeLabels[comment.type] || comment.type;
+
+        return `
+            <div class="group relative p-3 rounded-lg border ${colors.border} ${colors.bg}">
+                <button data-comment-idx="${comment.index}" class="copy-comment-btn absolute top-2 right-2 p-1.5 rounded-md bg-white/80 border border-gray-200 text-gray-400 opacity-0 group-hover:opacity-100 hover:text-[#0A66C2] hover:border-[#0A66C2] transition-all">
+                    <i class="ph ph-copy text-xs"></i>
+                </button>
+                <div class="flex items-center gap-2 mb-2 pr-8">
+                    <span class="w-1.5 h-1.5 rounded-full ${colors.dot}"></span>
+                    <span class="text-[9px] font-bold uppercase tracking-widest ${colors.text}">${label}</span>
+                    <span class="text-[9px] text-gray-400 ml-auto">#${comment.index}</span>
+                </div>
+                <p class="text-xs text-gray-700 leading-relaxed italic">${comment.text}</p>
+            </div>
+        `;
+    }).join('');
+
+    // Attach click listeners to all copy buttons
+    dom.commentsList.querySelectorAll('.copy-comment-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            e.stopPropagation();
+            const idx = parseInt(btn.dataset.commentIdx);
+            const comment = comments.find(c => c.index === idx);
+            if (!comment) return;
+
+            try {
+                await navigator.clipboard.writeText(comment.text);
+                const icon = btn.querySelector('i');
+                icon.className = 'ph ph-check text-xs text-green-600';
+                window.toast?.success(`Comment #${idx} copied`);
+                setTimeout(() => {
+                    icon.className = 'ph ph-copy text-xs';
+                }, 2000);
+            } catch (err) {
+                console.error('Copy failed', err);
+                window.toast?.error('Copy failed');
+            }
+        });
+    });
+
+    dom.commentsPreview.classList.remove('hidden');
 }
 
 async function updateStatus(newStatus, skipConfirm = false) {
@@ -452,12 +556,12 @@ async function generatePoster() {
 
     // Use currentPostMetadata if it exists (the "Shadow" metadata)
     const contentToParse = state.currentPostMetadata || dom.editor.value;
-    
+
     // Improved regex: handles newlines (\s), multiple spaces
     const metaMatch = contentToParse.match(/\[POSTER_DATA\]\s+headline:\s*"(.*?)"\s*\|\s*description_items:\s*(\[.*?\])\s*\|\s*pillar:\s*"(.*?)"/s);
-    
+
     let params = new URLSearchParams();
-    
+
     if (metaMatch) {
         params.set('headline', metaMatch[1].trim());
         params.set('descriptionItems', metaMatch[2].trim());
@@ -468,20 +572,51 @@ async function generatePoster() {
         const lines = dom.editor.value.split('\n')
             .map(l => l.trim())
             .filter(l => l.length > 0 && !l.startsWith('#') && !l.startsWith('<!--'));
-        
+
         const headline = lines.slice(0, 2).join(' ').slice(0, 100);
         params.set('headline', headline || 'My Headline');
-        
+
         const descLines = lines.slice(2, 4);
         params.set('descriptionItems', JSON.stringify(descLines));
-        
+
         const pillarMatch = state.currentPost.raw.match(/_([a-z]+)_angle/);
         params.set('pillar', pillarMatch ? pillarMatch[1] : 'problem');
         window.toast?.warn('No POSTER_DATA found, using fallback');
     }
-    
+
     params.set('date', state.currentTopic.date.split(' ')[0] || new Date().toISOString().slice(0, 10));
     window.open(`/poster?${params.toString()}`, '_blank');
+}
+
+async function copyAllComments() {
+    if (!state.currentComments || state.currentComments.length === 0) {
+        window.toast?.warn('No comments to copy');
+        return;
+    }
+
+    const text = state.currentComments.map(c => c.text).join('\n\n');
+    try {
+        await navigator.clipboard.writeText(text);
+        window.toast?.success(`${state.currentComments.length} comment(s) copied`);
+    } catch (err) {
+        console.error('Copy failed', err);
+        window.toast?.error('Copy failed');
+    }
+}
+
+async function generateComments() {
+    if (state.isEditing) await exitEditMode();
+    if (!state.currentPost) return;
+
+    const postPath = `content/posts/${state.currentTopic.id}/${state.currentPost.raw}`;
+    
+    try {
+        await navigator.clipboard.writeText(postPath);
+        window.toast?.info('Post path copied. Run: /comment <path>');
+    } catch (err) {
+        console.error('Copy failed', err);
+        window.toast?.error('Copy failed');
+    }
 }
 
 // --- Initialization ---
@@ -489,10 +624,12 @@ async function init() {
     await fetchTopics();
     keyboard.init();
     router.init();
-    
+
     dom.copyButton.onclick = copyCurrentPost;
     dom.copyPathButton.onclick = copyPostPath;
     dom.generatePosterButton.onclick = generatePoster;
+    dom.generateCommentsButton.onclick = generateComments;
+    dom.copyCommentsButton.onclick = copyAllComments;
 
     dom.topicFilter.addEventListener('input', (e) => {
         state.filterQuery = e.target.value.toLowerCase();

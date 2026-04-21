@@ -1,0 +1,20 @@
+---
+description: Surgery on a single post: Overwrite or add [POSTER_DATA] based on strategic rules.
+---
+
+Target Post: {{args}}
+
+1. READ: Load the Markdown file at the provided path.
+2. CONTEXT: Read 'context/POSTER_RULES.md' to master the strategic logic.
+3. ANALYSIS:
+   - Identify the core tension, key numbers, or contradictions in the post.
+   - Determine if the headline can stand alone or needs 1-3 supporting items.
+   - Detect the pillar (problem, decision, or honest) based on the filename or content.
+4. GENERATION:
+   - Construct a high-impact [POSTER_DATA] block.
+   - Format: `<!-- [POSTER_DATA] headline: "..." | description_items: ["item 1", "item 2"] | pillar: "..." -->`
+5. OVERWRITE: 
+   - Replace any existing [POSTER_DATA] block at the end of the file.
+   - If no block exists, append it.
+6. CONFIRMATION: Show the generated block in the console and confirm the file update.
+
